@@ -390,32 +390,44 @@
 
 - (void) keyboardWillShow: (NSNotification *) notification
 {
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed: kPOPLayerPositionY];
-    [animation setFromValue: @(CGRectGetMidY([self.view bounds]))];
-    [animation setToValue: @(CGRectGetMidY([self.view bounds]) - 90.0f)];
-    [animation setSpringBounciness: 8.0f];
-    [animation setSpringSpeed: 4.0f];
+    NSDictionary *info = [notification valueForKey: @"userInfo"];
+    
+    UIView *currentView;
     
     if ([self isShowingSignUp])
-        [self.signUpViewController.view.layer pop_addAnimation: animation forKey: @"keyboardWillShowSpringAnimation"];
+        currentView = [self.signUpViewController view];
     
     else
-        [self.loginViewController.view.layer pop_addAnimation: animation forKey: @"keyboardWillShowSpringAnimation"];
+        currentView = [self.loginViewController view];
+    
+    [UIView animateWithDuration: [[info valueForKey: @"UIKeyboardAnimationDurationUserInfoKey"] doubleValue]
+                          delay: 0
+                        options: [[info valueForKey: @"UIKeyboardAnimationCurveUserInfoKey"] integerValue]
+                     animations: ^{
+                         [currentView setCenter: CGPointMake(self.view.center.x, self.view.center.y - 90.0f)];
+                     }
+                     completion: NULL];
 }
 
 - (void) keyboardWillHide: (NSNotification *) notification
 {
-    POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed: kPOPLayerPositionY];
-    [animation setFromValue: @(CGRectGetMidY([self.view bounds]) - 90.0f)];
-    [animation setToValue: @(CGRectGetMidY([self.view bounds]))];
-    [animation setSpringBounciness: 8.0f];
-    [animation setSpringSpeed: 4.0f];
+    NSDictionary *info = [notification valueForKey: @"userInfo"];
+
+    UIView *currentView;
     
     if ([self isShowingSignUp])
-        [self.signUpViewController.view.layer pop_addAnimation: animation forKey: @"keyboardWillHideSpringAnimation"];
+        currentView = [self.signUpViewController view];
     
     else
-        [self.loginViewController.view.layer pop_addAnimation: animation forKey: @"keyboardWillHideSpringAnimation"];
+        currentView = [self.loginViewController view];
+    
+    [UIView animateWithDuration: [[info valueForKey: @"UIKeyboardAnimationDurationUserInfoKey"] doubleValue]
+                          delay: 0
+                        options: [[info valueForKey: @"UIKeyboardAnimationCurveUserInfoKey"] integerValue]
+                     animations: ^{
+                         [currentView setCenter: [self.view center]];
+                     }
+                     completion: NULL];
 }
 
 - (void) dealloc

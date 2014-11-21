@@ -25,13 +25,6 @@
     TimelineViewController *timelineViewController = [[TimelineViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: timelineViewController];
     
-    // Preloading the UIKeyboard to avoid lagging on initial appearance
-    UITextField *lagFreeField = [[UITextField alloc] init];
-    [window addSubview: lagFreeField];
-    [lagFreeField becomeFirstResponder];
-    [lagFreeField resignFirstResponder];
-    [lagFreeField removeFromSuperview];
-    
     [window setRootViewController: navigationController];
     [window makeKeyAndVisible];
     
