@@ -1,0 +1,50 @@
+/*
+  Localizable.strings
+  Spotted
+ 
+  Created by Mathieu White on 2014-11-17.
+  Copyright (c) 2014 Mathieu White. All rights reserved.
+*/
+
+// ViewControllers
+
+/** LoginViewController.m **/
+"Sign In" = "Sign In";
+"Forgot your password?" = "Forgot your password?";
+"Don't have an account?" = "Don't have an account?";
+"Sign up now" = "Sign up now";
+/** LoginViewController.m **/
+
+/** SignUpViewController.m **/
+"Create Your Account" = "Create Your Account";
+"Sign Up" = "Sign Up";
+/** SignUpViewController.m **/
+
+/** TimelineViewController.m **/
+/** TimelineViewController.m **/
+
+// Views
+
+/** UIAlertView Strings **/
+"Email Not Verified" = "Email Not Verified";
+"Email Not Verified Message" = "You must verify your email address before signing in.";
+"Okay" = "Okay";
+"Error" = "Error";
+"Missing Information" = "Missing Information";
+"No Email or Password" = "The email address and password fields are required.";
+"Email Address" = "Email Address";
+"Enter the email address for your account: " = "Enter the email address for your account: ";
+"Cancel" = "Cancel";
+"Send" = "Send";
+"Success" = "Success";
+"Success Message" = "Thank you for creating an account on Spotted. Please confirm your email address before signing in.";
+"All fields are required." = "All fields are required.";
+"Invalid Password" = "Invalid Password";
+"Invalid Password Message" = "Your password must have a minimum of 6 characters.";
+/** UIAlertView Strings **/
+
+/** SPAuthenticationTableViewCell.m **/
+"Email address" = "Email address";
+"Name" = "Name";
+"Password" = "Password";
+/** SPAuthenticationTableViewCell.m **/

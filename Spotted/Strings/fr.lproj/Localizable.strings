@@ -1,0 +1,50 @@
+/*
+  Localizable.strings
+  Spotted
+ 
+  Created by Mathieu White on 2014-11-17.
+  Copyright (c) 2014 Mathieu White. All rights reserved.
+*/
+
+// ViewControllers
+
+/** LoginViewController.m **/
+"Sign In" = "Se Connecter";
+"Forgot your password?" = "Mot de passe oublié?";
+"Don't have an account?" = "Pas de compte?";
+"Sign up now" = "Inscrivez-vous";
+/** LoginViewController.m **/
+
+/** SignUpViewController.m **/
+"Create Your Account" = "Créez Votre Compte";
+"Sign Up" = "S'inscrire";
+/** SignUpViewController.m **/
+
+/** TimelineViewController.m **/
+/** TimelineViewController.m **/
+
+// Views
+
+/** UIAlertView Strings **/
+"Email Not Verified" = "Courriel Non Vérifié";
+"Email Not Verified Message" = "Vous devez vérifier votre adresse courriel avant de vous connecter.";
+"Okay" = "Ok";
+"Error" = "Erreur";
+"Missing Information" = "Informations Manquantes";
+"No Email or Password" = "L'adresse courriel et le mot de passe sont nécessaires.";
+"Email Address" = "Adresse Courriel";
+"Enter the email address for your account: " = "Entrez l'adresse courriel de votre compte: ";
+"Cancel" = "Annuler";
+"Send" = "Envoyer";
+"Success" = "Succès";
+"Success Message" = "Merci de créer un compte sur Spotted. S'il vous plaît confirmer votre adresse courriel avant de vous connecter.";
+"All fields are required." = "Tous les champs sont obligatoires.";
+"Invalid Password" = "Mot de Passe Invalide";
+"Invalid Password Message" = "Votre mot de passe doit avoir un minimum de 6 caractères.";
+/** UIAlertView Strings **/
+
+/** SPAuthenticationTableViewCell.m **/
+"Email address" = "Adresse courriel";
+"Name" = "Nom";
+"Password" = "Mot de passe";
+/** SPAuthenticationTableViewCell.m **/
