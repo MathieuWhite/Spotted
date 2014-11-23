@@ -10,6 +10,6 @@
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
 
-@interface AuthenticationViewController : UIViewController <LoginViewControllerDelegate, SignUpViewControllerDelegate>
+@interface AuthenticationViewController : UIViewController <LoginViewControllerDelegate, SignUpViewControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @end

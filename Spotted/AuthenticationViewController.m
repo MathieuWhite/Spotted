@@ -7,6 +7,8 @@
 //
 
 #import "AuthenticationViewController.h"
+#import "FadePresentingAnimator.h"
+#import "FadeDismissingAnimator.h"
 #import "POP.h"
 
 @interface AuthenticationViewController ()
@@ -23,6 +25,21 @@
 @end
 
 @implementation AuthenticationViewController
+
+#pragma mark - Initialization
+
+- (id) init
+{
+    self = [super init];
+    
+    if (self)
+    {
+        [self setModalPresentationStyle: UIModalPresentationCustom];
+        [self setTransitioningDelegate: self];
+    }
+    
+    return self;
+}
 
 - (void) viewDidLoad
 {
@@ -379,6 +396,20 @@
     
     [self.signUpViewController.view.layer pop_addAnimation: signUpViewAnimation forKey: @"hideSignUpViewControllerAnimation"];
     [self.loginViewController.view.layer pop_addAnimation: loginViewAnimation forKey: @"showLoginViewControllerAnimation"];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate Methods
+
+- (id <UIViewControllerAnimatedTransitioning>) animationControllerForPresentedController: (UIViewController *) presented
+                                                                    presentingController: (UIViewController *) presenting
+                                                                        sourceController: (UIViewController *) source
+{
+    return [[FadePresentingAnimator alloc] init];
+}
+
+- (id <UIViewControllerAnimatedTransitioning>) animationControllerForDismissedController: (UIViewController *) dismissed
+{
+    return [[FadeDismissingAnimator alloc] init];
 }
 
 #pragma mark - Notification Methods

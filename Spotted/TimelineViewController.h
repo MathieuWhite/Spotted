@@ -11,6 +11,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TimelineViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@interface TimelineViewController : UIViewController
 
 @end

@@ -110,21 +110,23 @@
          {
              if (!error)
              {
-                 UIAlertView *successAlert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Success", nil)
-                                                                        message: NSLocalizedString(@"Success Message", nil)
-                                                                       delegate: self
-                                                              cancelButtonTitle: NSLocalizedString(@"Okay", nil)
-                                                              otherButtonTitles: nil];
-                 [successAlert show];
+                 AlertViewController *successAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Success", nil)
+                                                                                        message: NSLocalizedString(@"Success Message", nil)
+                                                                                       delegate: self
+                                                                             dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                                              actionButtonTitle: nil];
+                                  
+                 [self presentViewController: successAlert animated: YES completion: NULL];
              }
              else
              {
-                 UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
-                                                                      message: [error.userInfo objectForKey: @"error"]
-                                                                     delegate: self
-                                                            cancelButtonTitle: NSLocalizedString(@"Okay", nil)
-                                                            otherButtonTitles: nil];
-                 [errorAlert show];
+                 AlertViewController *errorAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Error", nil)
+                                                                                      message: [error.userInfo objectForKey: @"error"]
+                                                                                     delegate: self
+                                                                           dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                                            actionButtonTitle: nil];
+                 
+                 [self presentViewController: errorAlert animated: YES completion: NULL];
              }
              
              [PFUser logOut];
@@ -132,12 +134,13 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Missing Information", nil)
-                                                        message: NSLocalizedString(@"All fields are required.", nil)
-                                                       delegate: self
-                                              cancelButtonTitle: NSLocalizedString(@"Okay", nil)
-                                              otherButtonTitles: nil];
-        [alert show];
+        AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Missing Information", nil)
+                                                                        message: NSLocalizedString(@"All fields are required.", nil)
+                                                                       delegate: self
+                                                             dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                              actionButtonTitle: nil];
+        
+        [self presentViewController: alert animated: YES completion: NULL];
     }
 }
 
@@ -146,12 +149,13 @@
     // Password must be at least 6 characters long
     if ([password length] < 6)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Invalid Password", nil)
-                                                        message: NSLocalizedString(@"Invalid Message Password", nil)
-                                                       delegate: self
-                                              cancelButtonTitle: NSLocalizedString(@"Okay", nil)
-                                              otherButtonTitles: nil];
-        [alert show];
+        AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Invalid Password", nil)
+                                                                        message: NSLocalizedString(@"Invalid Password Message", nil)
+                                                                       delegate: self
+                                                             dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                              actionButtonTitle: nil];
+        
+        [self presentViewController: alert animated: YES completion: NULL];
         
         return NO;
     }
@@ -269,10 +273,10 @@
                                                             constant: -24.0f]];
 }
 
-#pragma mark - UIAlertViewDelegate Methods
+#pragma mark - AlertViewControllerDelegate Methods
 
-- (void) alertView: (UIAlertView *) alertView didDismissWithButtonIndex: (NSInteger) buttonIndex
-{
+- (void) alertViewController: (AlertViewController *) alertView didDismissWithButtonIndex: (NSInteger) buttonIndex
+{    
     if ([alertView.title isEqualToString: NSLocalizedString(@"Success", nil)])
     {
         [self.view endEditing: YES];

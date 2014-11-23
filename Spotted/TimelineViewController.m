@@ -8,10 +8,6 @@
 
 #import "TimelineViewController.h"
 #import "AuthenticationViewController.h"
-#import "LoginViewController.h"
-#import "SignUpViewController.h"
-#import "FadePresentingAnimator.h"
-#import "FadeDismissingAnimator.h"
 #import "SPColors.h"
 
 @interface TimelineViewController ()
@@ -57,8 +53,6 @@
     {
         // Initialize the authentication view controller
         AuthenticationViewController *authenticationController = [[AuthenticationViewController alloc] init];
-        [authenticationController setTransitioningDelegate: self];
-        [authenticationController setModalPresentationStyle: UIModalPresentationCustom];
         
         // Present the authentication view controller
         [self.navigationController presentViewController: authenticationController animated: YES completion: NULL];
@@ -69,20 +63,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - UIViewControllerTransitioningDelegate Methods
-
-- (id <UIViewControllerAnimatedTransitioning>) animationControllerForPresentedController: (UIViewController *) presented
-                                                                    presentingController: (UIViewController *) presenting
-                                                                        sourceController: (UIViewController *) source
-{
-    return [[FadePresentingAnimator alloc] init];
-}
-
-- (id <UIViewControllerAnimatedTransitioning>) animationControllerForDismissedController: (UIViewController *) dismissed
-{
-    return [[FadeDismissingAnimator alloc] init];
 }
 
 #pragma mark - View Setup Methods

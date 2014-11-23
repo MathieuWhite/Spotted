@@ -8,6 +8,8 @@
 
 @import Parse;
 
+#import "AlertViewController.h"
+
 static NSString * kUserLoginWasSuccessfulNotification = @"kUserLoginWasSuccessfulNotification";
 
 @protocol LoginViewControllerDelegate <NSObject>
@@ -16,7 +18,7 @@ static NSString * kUserLoginWasSuccessfulNotification = @"kUserLoginWasSuccessfu
 
 @end
 
-@interface LoginViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
+@interface LoginViewController : UIViewController <UIAlertViewDelegate, AlertViewControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, assign) id <LoginViewControllerDelegate> delegate;
 

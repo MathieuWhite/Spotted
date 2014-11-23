@@ -124,12 +124,14 @@
                  // Check user email verification
                  if (![[user objectForKey: @"emailVerified"] boolValue])
                  {
-                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Email Not Verified", nil)
-                                                                     message: NSLocalizedString(@"Email Not Verified Message", nil)
-                                                                    delegate: self
-                                                           cancelButtonTitle: NSLocalizedString(@"Okay", nil)
-                                                           otherButtonTitles: nil];
-                     [alert show];
+                     AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Email Not Verified", nil)
+                                                                                     message: NSLocalizedString(@"Email Not Verified Message", nil)
+                                                                                    delegate: self
+                                                                          dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                                           actionButtonTitle: nil];
+                     
+                     [self presentViewController: alert animated: YES completion: NULL];
+                     
                      [PFUser logOut];
                  }
                  
@@ -144,25 +146,26 @@
                  // Something went wrong
                  NSString *errorString = [[error userInfo] objectForKey: @"error"];
                  
-                 UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
-                                                                      message: errorString
-                                                                     delegate: self
-                                                            cancelButtonTitle: NSLocalizedString(@"Okay", nil)
-                                                            otherButtonTitles: nil];
-                 [errorAlert show];
+                 AlertViewController *errorAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Error", nil)
+                                                                                      message: errorString
+                                                                                     delegate: self
+                                                                           dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                                            actionButtonTitle: nil];
+                 
+                 [self presentViewController: errorAlert animated: YES completion: NULL];
              }
          }];
         
     }
     else
     {
-        // Interrupt the login process
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Missing Information", nil)
-                                                        message: NSLocalizedString(@"No Email or Password", nil)
-                                                       delegate: self
-                                              cancelButtonTitle: NSLocalizedString(@"Okay", nil)
-                                              otherButtonTitles: nil];
-        [alert show];
+        AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Missing Information", nil)
+                                                                        message: NSLocalizedString(@"No Email or Password", nil)
+                                                                       delegate: self
+                                                             dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                              actionButtonTitle: nil];
+        
+        [self presentViewController: alert animated: YES completion: NULL];
     }
 }
 
@@ -184,7 +187,6 @@
 {
     if ([self.delegate respondsToSelector: @selector(transitionFromLoginView)])
         [self.delegate transitionFromLoginView];
-    
 }
 
 #pragma mark - Auto Layout Method
