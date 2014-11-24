@@ -7,7 +7,6 @@
 //
 
 @import Parse;
-@import ParseUI;
 
 #import <UIKit/UIKit.h>
 

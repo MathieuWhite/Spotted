@@ -12,6 +12,9 @@
 
 @interface SignUpViewController ()
 
+@property (nonatomic, strong) NSArray *availableSchools;
+@property (nonatomic, strong) PFObject *school;
+
 @property (nonatomic, weak) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, weak) UIButton *backButton;
 @property (nonatomic, weak) UILabel *titleLabel;
@@ -25,6 +28,9 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Get the available schools
+    [self requestAvailableSchools];
     
     // Set the background color to clear
     [self.view setBackgroundColor: [UIColor clearColor]];
@@ -83,6 +89,23 @@
 
 #pragma mark - Private Instance Methods
 
+- (void) requestAvailableSchools
+{
+    PFQuery *query = [PFQuery queryWithClassName: @"School"];
+    [query setLimit: 100]; // 100 is the default value
+    [query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error)
+     {
+         if (!error)
+         {
+             [self setAvailableSchools: objects];
+         }
+         else
+         {
+             NSLog(@"Error: %@ %@", error, [error userInfo]);
+         }
+     }];
+}
+
 - (void) processSignUp
 {
     SPTextField *emailTextField = [(SPAuthenticationTableViewCell *) [self.signUpTableView cellForRowAtIndexPath:
@@ -97,6 +120,9 @@
     // All fields are required
     if ([emailTextField.text length] && [nameTextField.text length] && [passwordTextField.text length])
     {
+        if (![self validateEmail: [emailTextField text]])
+            return;
+        
         if (![self validatePassword: [passwordTextField text]])
             return;
         
@@ -105,6 +131,7 @@
         [user setEmail: [[emailTextField text] lowercaseString]];
         [user setObject: [nameTextField text] forKey: @"name"];
         [user setPassword: [passwordTextField text]];
+        [user setObject: [self school] forKey: @"school"];
         
         [user signUpInBackgroundWithBlock: ^(BOOL succeeded, NSError *error)
          {
@@ -144,10 +171,48 @@
     }
 }
 
-- (BOOL) validatePassword: (NSString *) password
+- (BOOL) validateEmail: (NSString *) email
+{
+    NSArray *separatedEmail = [email componentsSeparatedByString: @"@"];
+    NSString *domain = [separatedEmail lastObject];
+    
+    __block BOOL schoolAvailable = NO;
+    
+    [self.availableSchools enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop)
+     {
+         if ([domain isEqualToString: [obj valueForKey: @"domain"]])
+         {
+             [self setSchool: obj];
+             schoolAvailable = YES;
+             *stop = YES;
+         }
+     }];
+    
+    if (schoolAvailable)
+    {
+        return YES;
+    }
+    
+    else
+    {
+        AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Not Available", nil)
+                                                                        message: NSLocalizedString(@"Not Available Message", nil)
+                                                                       delegate: self
+                                                             dismissButtonTitle: NSLocalizedString(@"Cancel", nil)
+                                                              actionButtonTitle: NSLocalizedString(@"Send", nil)];
+        
+        [self presentViewController: alert animated: YES completion: NULL];
+        
+        return NO;
+    }
+    
+    return NO;
+}
+
+- (BOOL) validatePassword: (NSString *) secret
 {
     // Password must be at least 6 characters long
-    if ([password length] < 6)
+    if ([secret length] < 6)
     {
         AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Invalid Password", nil)
                                                                         message: NSLocalizedString(@"Invalid Password Message", nil)
@@ -282,6 +347,16 @@
         [self.view endEditing: YES];
         [[NSNotificationCenter defaultCenter] postNotificationName: kUserSignUpWasSuccessfulNotification object: nil];
     }
+    
+    if ([alertView.title isEqualToString: NSLocalizedString(@"Not Available", nil)])
+    {
+        // Send button
+        if (buttonIndex == 1)
+        {
+            NSLog(@"send email here");
+        }
+    }
+
 }
 
 #pragma mark - Gesture Recognizer Methods

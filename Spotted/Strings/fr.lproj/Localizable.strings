@@ -41,6 +41,8 @@
 "All fields are required." = "Tous les champs sont obligatoires.";
 "Invalid Password" = "Mot de Passe Invalide";
 "Invalid Password Message" = "Votre mot de passe doit avoir un minimum de 6 caractères.";
+"Not Available" = "Non Disponible";
+"Not Available Message" = "Votre école est actuellement pas disponible sur Spotted. S'il vous plaît envoyez-nous un courriel avec le nom de votre école et nous l'ajouterons le plus rapidement possible.";
 /** UIAlertView Strings **/
 
 /** SPAuthenticationTableViewCell.m **/
