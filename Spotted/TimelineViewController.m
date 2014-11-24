@@ -9,10 +9,11 @@
 #import "TimelineViewController.h"
 #import "AuthenticationViewController.h"
 #import "SPColors.h"
+#import "SPSchool.h"
 
 @interface TimelineViewController ()
 
-@property (nonatomic, strong) PFObject *school;
+@property (nonatomic, strong) SPSchool *school;
 
 @property (nonatomic, weak) UILabel *welcomeLabel;
 
@@ -52,7 +53,7 @@
         {
             if (!error)
             {
-                [self setSchool: object];
+                [self setSchool: (SPSchool *) object];
                 [self setupViewForCurrentUser];
             }
             
@@ -140,7 +141,7 @@
      {
          if (!error)
          {
-             [self setSchool: object];
+             [self setSchool: (SPSchool *) object];
              [self setupViewForCurrentUser];
          }
          

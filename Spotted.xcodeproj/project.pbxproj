@@ -49,6 +49,7 @@
 		4E1A83FD1A194A340001F0E7 /* FadeDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A83FC1A194A340001F0E7 /* FadeDismissingAnimator.m */; };
 		4E424F081A1A5EA800AB1922 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E424F071A1A5EA800AB1922 /* AuthenticationViewController.m */; };
 		4E424F0C1A1A678000AB1922 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E424F0A1A1A678000AB1922 /* Localizable.strings */; };
+		4EB037651A23D28A00A50B35 /* SPSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB037641A23D28A00A50B35 /* SPSchool.m */; };
 		4ED4A0FB1A20D08D002D1B59 /* AlertPresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED4A0FA1A20D08D002D1B59 /* AlertPresentingAnimator.m */; };
 		4ED4A0FE1A20D1B8002D1B59 /* AlertDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED4A0FD1A20D1B8002D1B59 /* AlertDismissingAnimator.m */; };
 		4ED4A1011A20D244002D1B59 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED4A1001A20D244002D1B59 /* AlertViewController.m */; };
@@ -162,6 +163,8 @@
 		4E424F0B1A1A678000AB1922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Strings/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E424F0D1A1A678E00AB1922 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Strings/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E424F0E1A1A679700AB1922 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Strings/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4EB037631A23D28A00A50B35 /* SPSchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSchool.h; path = Models/SPSchool.h; sourceTree = "<group>"; };
+		4EB037641A23D28A00A50B35 /* SPSchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSchool.m; path = Models/SPSchool.m; sourceTree = "<group>"; };
 		4ED4A0F91A20D08D002D1B59 /* AlertPresentingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertPresentingAnimator.h; path = Animators/AlertPresentingAnimator.h; sourceTree = "<group>"; };
 		4ED4A0FA1A20D08D002D1B59 /* AlertPresentingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertPresentingAnimator.m; path = Animators/AlertPresentingAnimator.m; sourceTree = "<group>"; };
 		4ED4A0FC1A20D1B8002D1B59 /* AlertDismissingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertDismissingAnimator.h; path = Animators/AlertDismissingAnimator.h; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 		4E249D561A238DC20040C1F9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4EB037631A23D28A00A50B35 /* SPSchool.h */,
+				4EB037641A23D28A00A50B35 /* SPSchool.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -527,6 +532,7 @@
 				4E1A83E11A1902590001F0E7 /* POPDecayAnimation.mm in Sources */,
 				4EE6F7E01A1AEBC50084F64E /* SPStrokeButton.m in Sources */,
 				4ED4A0FB1A20D08D002D1B59 /* AlertPresentingAnimator.m in Sources */,
+				4EB037651A23D28A00A50B35 /* SPSchool.m in Sources */,
 				4EE6F7DD1A1AD91C0084F64E /* SPSignUpTableView.m in Sources */,
 				4E1A83FD1A194A340001F0E7 /* FadeDismissingAnimator.m in Sources */,
 				4E1A83DA1A1902590001F0E7 /* POPAnimationExtras.mm in Sources */,

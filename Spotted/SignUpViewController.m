@@ -9,11 +9,12 @@
 #import "SignUpViewController.h"
 #import "SPSignUpTableView.h"
 #import "SPStrokeButton.h"
+#import "SPSchool.h"
 
 @interface SignUpViewController ()
 
 @property (nonatomic, strong) NSArray *availableSchools;
-@property (nonatomic, strong) PFObject *school;
+@property (nonatomic, strong) SPSchool *school;
 
 @property (nonatomic, weak) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, weak) UIButton *backButton;
@@ -173,14 +174,14 @@
 
 - (BOOL) validateEmail: (NSString *) email
 {
-    NSArray *separatedEmail = [email componentsSeparatedByString: @"@"];
+    NSArray *separatedEmail = [[email lowercaseString] componentsSeparatedByString: @"@"];
     NSString *domain = [separatedEmail lastObject];
     
     __block BOOL schoolAvailable = NO;
     
     [self.availableSchools enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop)
      {
-         if ([domain isEqualToString: [obj valueForKey: @"domain"]])
+         if ([domain isEqualToString: [[obj valueForKey: @"domain"] lowercaseString]])
          {
              [self setSchool: obj];
              schoolAvailable = YES;
