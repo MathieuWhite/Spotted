@@ -11,6 +11,9 @@
 #import "AppDelegate.h"
 #import "TimelineViewController.h"
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 @interface AppDelegate ()
 
 @end
@@ -20,7 +23,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+	
+#ifdef RELEASE
+	
+	[Fabric with: @[CrashlyticsKit]];
+	
+#endif
+	
     UIWindow *window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
     TimelineViewController *timelineViewController = [[TimelineViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController: timelineViewController];

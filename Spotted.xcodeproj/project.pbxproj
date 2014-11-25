@@ -60,6 +60,8 @@
 		4EE6F7DA1A1ACD2C0084F64E /* SPLoginTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6F7D91A1ACD2C0084F64E /* SPLoginTableView.m */; };
 		4EE6F7DD1A1AD91C0084F64E /* SPSignUpTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6F7DC1A1AD91C0084F64E /* SPSignUpTableView.m */; };
 		4EE6F7E01A1AEBC50084F64E /* SPStrokeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6F7DF1A1AEBC50084F64E /* SPStrokeButton.m */; };
+		5933DA4F1A24B98E00E01E0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */; };
+		5933DA501A24B98E00E01E0E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933DA4E1A24B98E00E01E0E /* Fabric.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +189,8 @@
 		4EE6F7DC1A1AD91C0084F64E /* SPSignUpTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSignUpTableView.m; path = Views/SPSignUpTableView.m; sourceTree = "<group>"; };
 		4EE6F7DE1A1AEBC50084F64E /* SPStrokeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPStrokeButton.h; path = Views/SPStrokeButton.h; sourceTree = "<group>"; };
 		4EE6F7DF1A1AEBC50084F64E /* SPStrokeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPStrokeButton.m; path = Views/SPStrokeButton.m; sourceTree = "<group>"; };
+		5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		5933DA4E1A24B98E00E01E0E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,8 +206,10 @@
 				4E1A83311A17B9540001F0E7 /* libz.dylib in Frameworks */,
 				4E1A83431A17B9D00001F0E7 /* MobileCoreServices.framework in Frameworks */,
 				4E1A83061A17B5F40001F0E7 /* Parse.framework in Frameworks */,
+				5933DA501A24B98E00E01E0E /* Fabric.framework in Frameworks */,
 				4E1A83391A17B98A0001F0E7 /* Social.framework in Frameworks */,
 				4E1A833B1A17B98E0001F0E7 /* Security.framework in Frameworks */,
+				5933DA4F1A24B98E00E01E0E /* Crashlytics.framework in Frameworks */,
 				4E1A833F1A17B9B20001F0E7 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +276,8 @@
 				4E1A82DD1A17B53B0001F0E7 /* main.m */,
 				4EE294B61A1955F000022566 /* SPColors.h */,
 				4E1A83011A17B5710001F0E7 /* Warnings.xcconfig */,
+				5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */,
+				5933DA4E1A24B98E00E01E0E /* Fabric.framework */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -441,6 +449,7 @@
 				4E1A82D41A17B53B0001F0E7 /* Sources */,
 				4E1A82D51A17B53B0001F0E7 /* Frameworks */,
 				4E1A82D61A17B53B0001F0E7 /* Resources */,
+				5933DA4C1A24B95700E01E0E /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -480,6 +489,7 @@
 				TargetAttributes = {
 					4E1A82D71A17B53B0001F0E7 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = W48L6Z4654;
 					};
 					4E1A82F01A17B53B0001F0E7 = {
 						CreatedOnToolsVersion = 6.1;
@@ -527,6 +537,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5933DA4C1A24B95700E01E0E /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "releaseConfig=\"Release\"\n\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\n\n./Fabric.framework/run 9dfaba5dced813ed66e1f2291c22464b97fe3be3 9b9ce5921627b461c0347829020735887526444b662d5db383e852f43e932b00\n\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4E1A82D41A17B53B0001F0E7 /* Sources */ = {
@@ -677,6 +704,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -695,15 +723,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Spotted/Frameworks",
 					"$(PROJECT_DIR)/Spotted",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Spotted/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -712,15 +744,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Spotted/Frameworks",
 					"$(PROJECT_DIR)/Spotted",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Spotted/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
