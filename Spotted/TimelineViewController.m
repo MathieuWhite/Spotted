@@ -8,6 +8,7 @@
 
 #import "TimelineViewController.h"
 #import "AuthenticationViewController.h"
+#import "SPNavigationTitleView.h"
 #import "SPColors.h"
 #import "SPSchool.h"
 
@@ -15,6 +16,7 @@
 
 @property (nonatomic, strong) SPSchool *school;
 
+@property (nonatomic, weak) SPNavigationTitleView *titleView;
 @property (nonatomic, weak) UILabel *welcomeLabel;
 
 @end
@@ -96,19 +98,22 @@
 - (void) setupViewForCurrentUser
 {
     // School colors
-    CGFloat red = [[[self.school valueForKey: @"colors"] valueForKey: @"red"] floatValue] / 255.0f;
-    CGFloat green = [[[self.school valueForKey: @"colors"] valueForKey: @"green"] floatValue] / 255.0f;
-    CGFloat blue = [[[self.school valueForKey: @"colors"] valueForKey: @"blue"] floatValue] / 255.0f;
+    CGFloat red = [[self.school.colors valueForKey: @"red"] floatValue] / 255.0f;
+    CGFloat green = [[self.school.colors valueForKey: @"green"] floatValue] / 255.0f;
+    CGFloat blue = [[self.school.colors valueForKey: @"blue"] floatValue] / 255.0f;
     
     // Navigation bar properties
     [self.navigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics: UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage: [UIImage new]];
     [self.navigationController.navigationBar setTranslucent: NO];
     [self.navigationController.navigationBar setBarTintColor: [UIColor colorWithRed: red green: green blue: blue alpha: 1.0f]];
-    [self.navigationController.navigationBar setTitleTextAttributes: @{ NSForegroundColorAttributeName : [UIColor whiteColor] }];
     
-    // Set the navigation bar title
-    [self setTitle: [self.school valueForKey: @"name"]];
+    // Custom NavigationBar Title View
+    SPNavigationTitleView *titleView = [[SPNavigationTitleView alloc] init];
+    [titleView setFrame: [self.navigationController.navigationBar bounds]];
+    [titleView setTintColor: [UIColor whiteColor]];
+    [titleView setDetailText: [self.school name]];
+    [self.navigationItem setTitleView: titleView];
 
     // Slide the navigation bar in the view
     [self.navigationController setNavigationBarHidden: NO];
@@ -126,7 +131,18 @@
     
     [self.view addSubview: welcomeLabel];
     
+    // Set each component to its property
+    [self setTitleView: titleView];
     [self setWelcomeLabel: welcomeLabel];
+    
+    // Auto Layout
+    [self setupConstraints];
+}
+
+#pragma mark - Auto Layout Methods
+
+- (void) setupConstraints
+{
 }
 
 #pragma mark - Notification Methods
