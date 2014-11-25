@@ -18,10 +18,16 @@
 /** SignUpViewController.m **/
 "Create Your Account" = "Create Your Account";
 "Sign Up" = "Sign Up";
+"Email Subject" = "School Request";
+"Message Body" = "Hi Mathieu,\nPlease support [my school] on Secret App!\nThank You.";
 /** SignUpViewController.m **/
 
 /** TimelineViewController.m **/
 /** TimelineViewController.m **/
+
+/** SettingsViewController.m **/
+"Settings" = "Settings";
+/** SettingsViewController.m **/
 
 // Views
 
@@ -37,12 +43,14 @@
 "Cancel" = "Cancel";
 "Send" = "Send";
 "Success" = "Success";
-"Success Message" = "Thank you for creating an account on Spotted. Please confirm your email address before signing in.";
+"Success Message" = "Thank you for creating an account on Secret App. Please confirm your email address before signing in.";
 "All fields are required." = "All fields are required.";
 "Invalid Password" = "Invalid Password";
 "Invalid Password Message" = "Your password must have a minimum of 6 characters.";
 "Not Available" = "Not Available";
-"Not Available Message" = "Your school is currently not available on Spotted. Please send us an email with your school's name and we'll add it as soon as possible.";
+"Not Available Message" = "Your school is currently not available on Secret App. Please send us an email with your school's name and we'll add it as soon as possible.";
+"Invalid Email" = "Invalid Email";
+"Invalid Email Message" = "You must sign up using a school provided email address.";
 /** UIAlertView Strings **/
 
 /** SPAuthenticationTableViewCell.m **/

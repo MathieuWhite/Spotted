@@ -8,6 +8,7 @@
 
 #import "TimelineViewController.h"
 #import "AuthenticationViewController.h"
+#import "SettingsViewController.h"
 #import "SPNavigationTitleView.h"
 #import "SPColors.h"
 #import "SPSchool.h"
@@ -18,6 +19,8 @@
 
 @property (nonatomic, weak) SPNavigationTitleView *titleView;
 @property (nonatomic, weak) UILabel *welcomeLabel;
+
+@property (nonatomic, getter = isPresentingView) BOOL presentingView;
 
 @end
 
@@ -43,6 +46,10 @@
 - (void) viewWillAppear: (BOOL) animated
 {
     [super viewWillAppear: animated];
+    
+    // The view is appearing from a dismissed view controller
+    if ([self isPresentingView])
+        return;
     
     // Verify if a user is logged in
     if ([PFUser currentUser])
@@ -114,8 +121,21 @@
     [titleView setTintColor: [UIColor whiteColor]];
     [titleView setDetailText: [self.school name]];
     [self.navigationItem setTitleView: titleView];
+    
+    // Initialize the Settings Icon
+    UIBarButtonItem *settingsIcon = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"settingsBarButtonItem"]
+                                                                     style: UIBarButtonItemStylePlain
+                                                                    target: self
+                                                                    action: @selector(showSettings)];
+    [settingsIcon setTintColor: [UIColor whiteColor]];
+    
+    // Initialize the Compose Icon
+    
+    // Set the navigation bar icons
+    [self.navigationItem setLeftBarButtonItem: settingsIcon];
+    [self.navigationItem setRightBarButtonItem: settingsIcon];
 
-    // Slide the navigation bar in the view
+    // Show the navigation bar
     [self.navigationController setNavigationBarHidden: NO];
     
     // Set the background colorg
@@ -143,6 +163,37 @@
 
 - (void) setupConstraints
 {
+}
+
+#pragma mark - BarButtonItem Methods
+
+- (void) showSettings
+{
+    SettingsViewController *settings = [[SettingsViewController alloc] init];
+    [settings setModalTransitionStyle: UIModalTransitionStyleCoverVertical];
+    [settings setModalPresentationStyle: UIModalPresentationCurrentContext];
+    
+    UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController: settings];
+    
+    // School colors
+    CGFloat red = [[self.school.colors valueForKey: @"red"] floatValue] / 255.0f;
+    CGFloat green = [[self.school.colors valueForKey: @"green"] floatValue] / 255.0f;
+    CGFloat blue = [[self.school.colors valueForKey: @"blue"] floatValue] / 255.0f;
+    
+    [settingsNavigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics: UIBarMetricsDefault];
+    [settingsNavigationController.navigationBar setShadowImage: [UIImage new]];
+    [settingsNavigationController.navigationBar setTranslucent: NO];
+    [settingsNavigationController.navigationBar setBarTintColor: [UIColor colorWithRed: red green: green blue: blue alpha: 1.0f]];
+    
+    [self presentViewController: settingsNavigationController animated: YES completion: ^
+    {
+        [self setPresentingView: YES];
+    }];
+}
+
+- (void) showCompose
+{
+    NSLog(@"showCompose");
 }
 
 #pragma mark - Notification Methods

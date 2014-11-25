@@ -49,6 +49,7 @@
 		4E1A83FD1A194A340001F0E7 /* FadeDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A83FC1A194A340001F0E7 /* FadeDismissingAnimator.m */; };
 		4E424F081A1A5EA800AB1922 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E424F071A1A5EA800AB1922 /* AuthenticationViewController.m */; };
 		4E424F0C1A1A678000AB1922 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E424F0A1A1A678000AB1922 /* Localizable.strings */; };
+		4E8711141A24BFA100F818C4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8711131A24BFA100F818C4 /* SettingsViewController.m */; };
 		4EB037651A23D28A00A50B35 /* SPSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB037641A23D28A00A50B35 /* SPSchool.m */; };
 		4EB037681A23D8A100A50B35 /* SPNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB037671A23D8A100A50B35 /* SPNavigationTitleView.m */; };
 		4ED4A0FB1A20D08D002D1B59 /* AlertPresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED4A0FA1A20D08D002D1B59 /* AlertPresentingAnimator.m */; };
@@ -166,6 +167,8 @@
 		4E424F0B1A1A678000AB1922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Strings/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E424F0D1A1A678E00AB1922 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Strings/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E424F0E1A1A679700AB1922 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Strings/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E8711121A24BFA100F818C4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		4E8711131A24BFA100F818C4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4EB037631A23D28A00A50B35 /* SPSchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSchool.h; path = Models/SPSchool.h; sourceTree = "<group>"; };
 		4EB037641A23D28A00A50B35 /* SPSchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSchool.m; path = Models/SPSchool.m; sourceTree = "<group>"; };
 		4EB037661A23D8A100A50B35 /* SPNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPNavigationTitleView.h; path = Views/SPNavigationTitleView.h; sourceTree = "<group>"; };
@@ -189,8 +192,8 @@
 		4EE6F7DC1A1AD91C0084F64E /* SPSignUpTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSignUpTableView.m; path = Views/SPSignUpTableView.m; sourceTree = "<group>"; };
 		4EE6F7DE1A1AEBC50084F64E /* SPStrokeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPStrokeButton.h; path = Views/SPStrokeButton.h; sourceTree = "<group>"; };
 		4EE6F7DF1A1AEBC50084F64E /* SPStrokeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPStrokeButton.m; path = Views/SPStrokeButton.m; sourceTree = "<group>"; };
-		5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
-		5933DA4E1A24B98E00E01E0E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Spotted/Frameworks/Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		5933DA4E1A24B98E00E01E0E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Spotted/Frameworks/Fabric.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +254,8 @@
 				4E424F071A1A5EA800AB1922 /* AuthenticationViewController.m */,
 				4E1A83461A18FE670001F0E7 /* LoginViewController.h */,
 				4E1A83471A18FE680001F0E7 /* LoginViewController.m */,
+				4E8711121A24BFA100F818C4 /* SettingsViewController.h */,
+				4E8711131A24BFA100F818C4 /* SettingsViewController.m */,
 				4EE294BB1A19832800022566 /* SignUpViewController.h */,
 				4EE294BC1A19832800022566 /* SignUpViewController.m */,
 				4E1A831F1A17B7D60001F0E7 /* TimelineViewController.h */,
@@ -276,8 +281,6 @@
 				4E1A82DD1A17B53B0001F0E7 /* main.m */,
 				4EE294B61A1955F000022566 /* SPColors.h */,
 				4E1A83011A17B5710001F0E7 /* Warnings.xcconfig */,
-				5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */,
-				5933DA4E1A24B98E00E01E0E /* Fabric.framework */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -302,6 +305,8 @@
 		4E1A83021A17B5980001F0E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */,
+				5933DA4E1A24B98E00E01E0E /* Fabric.framework */,
 				4E1A83441A17BD6D0001F0E7 /* ParseUI.framework */,
 				4E1A83241A17B8F50001F0E7 /* Accounts.framework */,
 				4E1A832A1A17B9330001F0E7 /* AudioToolbox.framework */,
@@ -571,6 +576,7 @@
 				4E1A83481A18FE680001F0E7 /* LoginViewController.m in Sources */,
 				4E1A83E31A1902590001F0E7 /* POPLayerExtras.mm in Sources */,
 				4EE6F7DA1A1ACD2C0084F64E /* SPLoginTableView.m in Sources */,
+				4E8711141A24BFA100F818C4 /* SettingsViewController.m in Sources */,
 				4EB037681A23D8A100A50B35 /* SPNavigationTitleView.m in Sources */,
 				4E1A82E11A17B53B0001F0E7 /* AppDelegate.m in Sources */,
 				4E1A83D71A1902590001F0E7 /* POPAnimatableProperty.mm in Sources */,

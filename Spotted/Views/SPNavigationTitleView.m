@@ -38,7 +38,7 @@
     
     // Initialize the title label
     UILabel *titleLabel = [[UILabel alloc] init];
-    [titleLabel setText: @"Spotted"];
+    [titleLabel setText: @"Secret App"];
     [titleLabel setTextAlignment: NSTextAlignmentCenter];
     [titleLabel setFont: [UIFont fontWithName: @"Avenir" size: 16.0f]];
     [titleLabel setTranslatesAutoresizingMaskIntoConstraints: NO];
@@ -86,7 +86,7 @@
                                                          toItem: self
                                                       attribute: NSLayoutAttributeTop
                                                      multiplier: 1.0f
-                                                       constant: 5.0f]];
+                                                       constant: 2.0f]];
     
     // Title Label Left
     [self addConstraint: [NSLayoutConstraint constraintWithItem: self.titleLabel
@@ -113,7 +113,7 @@
                                                          toItem: self.titleLabel
                                                       attribute: NSLayoutAttributeBottom
                                                      multiplier: 1.0f
-                                                       constant: -4.0f]];
+                                                       constant: -1.0f]];
     
     // Detail Label Left
     [self addConstraint: [NSLayoutConstraint constraintWithItem: self.detailLabel

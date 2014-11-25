@@ -177,6 +177,21 @@
     NSArray *separatedEmail = [[email lowercaseString] componentsSeparatedByString: @"@"];
     NSString *domain = [separatedEmail lastObject];
     
+    // Not using a school email
+    NSArray *emailProviders = @[@"gmail.com"];
+    if ([emailProviders containsObject: domain] || [separatedEmail count] == 1)
+    {
+        AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Invalid Email", nil)
+                                                                        message: NSLocalizedString(@"Invalid Email Message", nil)
+                                                                       delegate: self
+                                                             dismissButtonTitle: NSLocalizedString(@"Okay", nil)
+                                                              actionButtonTitle: nil];
+        
+        [self presentViewController: alert animated: YES completion: NULL];
+        
+        return NO;
+    }
+    
     __block BOOL schoolAvailable = NO;
     
     [self.availableSchools enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop)
@@ -354,10 +369,39 @@
         // Send button
         if (buttonIndex == 1)
         {
-            NSLog(@"send email here");
+            /*
+            // Email Subject
+            NSString *subject = NSLocalizedString(@"Email Subject", nil);
+            
+            // Email Content
+            NSString *messageBody = NSLocalizedString(@"Message Body", nil);
+            
+            // To address
+            NSArray *toRecipents = [NSArray arrayWithObject: @"me@mathieuwhite.com"];
+            
+            MFMailComposeViewController *mailController = [[MFMailComposeViewController alloc] init];
+            [mailController setMailComposeDelegate: self];
+            [mailController setSubject: subject];
+            [mailController setMessageBody: messageBody isHTML: NO];
+            [mailController setToRecipients: toRecipents];
+            [mailController setModalPresentationStyle: UIModalPresentationFullScreen];
+            
+            // Present the mail view controller
+            [self presentViewController: mailController animated: YES completion: NULL];
+             */
         }
     }
 
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate Methods
+
+- (void) mailComposeController: (MFMailComposeViewController *) controller
+           didFinishWithResult: (MFMailComposeResult) result
+                         error: (NSError *) error
+{
+    // Close the mail view controller
+    [self dismissViewControllerAnimated: YES completion: NULL];
 }
 
 #pragma mark - Gesture Recognizer Methods

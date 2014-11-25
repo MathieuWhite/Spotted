@@ -7,6 +7,7 @@
 //
 
 @import Parse;
+@import MessageUI;
 
 #import "AlertViewController.h"
 
@@ -18,7 +19,7 @@ static NSString * kUserSignUpWasSuccessfulNotification = @"kUserSignUpWasSuccess
 
 @end
 
-@interface SignUpViewController : UIViewController <AlertViewControllerDelegate>
+@interface SignUpViewController : UIViewController <AlertViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, assign) id <SignUpViewControllerDelegate> delegate;
 

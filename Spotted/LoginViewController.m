@@ -39,7 +39,7 @@
     
     // Initialize the logo
     UILabel *textLogo = [[UILabel alloc] init];
-    [textLogo setText: @"Spotted"];
+    [textLogo setText: @"Secret App"];
     [textLogo setTextColor: [UIColor whiteColor]];
     [textLogo setTextAlignment: NSTextAlignmentCenter];
     [textLogo setFont: [UIFont fontWithName: @"Avenir-Light" size: 36.0f]];
