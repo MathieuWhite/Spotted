@@ -99,7 +99,7 @@
 
 - (void) setupView
 {
-    [self.view setBackgroundColor: SPGrayBackground];
+    [self.view setBackgroundColor: SPGrayBackgroundColor];
 }
 
 - (void) setupViewForCurrentUser
@@ -129,17 +129,22 @@
                                                                     action: @selector(showSettings)];
     [settingsIcon setTintColor: [UIColor whiteColor]];
     
-    // Initialize the Compose Icon
+    // Initialize the Conversations Icon
+    UIBarButtonItem *conversationsIcon = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed: @"conversationsBarButtonItem"]
+                                                                          style: UIBarButtonItemStylePlain
+                                                                         target: self
+                                                                         action: @selector(showConversations)];
+    [conversationsIcon setTintColor: [UIColor whiteColor]];
     
     // Set the navigation bar icons
     [self.navigationItem setLeftBarButtonItem: settingsIcon];
-    [self.navigationItem setRightBarButtonItem: settingsIcon];
+    [self.navigationItem setRightBarButtonItem: conversationsIcon];
 
     // Show the navigation bar
     [self.navigationController setNavigationBarHidden: NO];
     
     // Set the background colorg
-    [self.view setBackgroundColor: SPGrayBackground];
+    [self.view setBackgroundColor: SPGrayBackgroundColor];
     
     // Initialize the welcome label
     UILabel *welcomeLabel = [[UILabel alloc] init];
@@ -191,9 +196,9 @@
     }];
 }
 
-- (void) showCompose
+- (void) showConversations
 {
-    NSLog(@"showCompose");
+    NSLog(@"showConversations");
 }
 
 #pragma mark - Notification Methods

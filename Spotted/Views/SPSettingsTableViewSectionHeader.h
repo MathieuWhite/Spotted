@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  SPSettingsTableViewSectionHeader.h
 //  Spotted
 //
 //  Created by Mathieu White on 2014-11-25.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SPSettingsTableViewSectionHeader : UIView
+
+- (void) setHeaderTitle: (NSString *) title;
 
 @end

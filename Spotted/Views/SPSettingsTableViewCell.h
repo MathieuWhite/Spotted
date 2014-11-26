@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  SPSettingsTableViewCell.h
 //  Spotted
 //
 //  Created by Mathieu White on 2014-11-25.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SPSettingsTableViewCell : UITableViewCell
 
 @end

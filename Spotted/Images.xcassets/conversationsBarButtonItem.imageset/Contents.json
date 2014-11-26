@@ -2,17 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "settingsBarButtonItem@2x.png"
+      "filename" : "conversationsBarButtonItem@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "settingsBarButtonItem@3x.png"
+      "filename" : "conversationsBarButtonItem@3x.png"
     }
   ],
   "info" : {

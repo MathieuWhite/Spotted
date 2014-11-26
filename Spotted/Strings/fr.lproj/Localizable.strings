@@ -27,6 +27,9 @@
 
 /** SettingsViewController.m **/
 "Settings" = "Paramètres";
+"General" = "GÉNÉRAL";
+"Info" = "INFO";
+"Account" = "COMPTE";
 /** SettingsViewController.m **/
 
 // Views
