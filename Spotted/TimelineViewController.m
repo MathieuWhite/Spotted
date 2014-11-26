@@ -11,6 +11,7 @@
 #import "SettingsViewController.h"
 #import "SPNavigationTitleView.h"
 #import "SPColors.h"
+#import "SPConstants.h"
 #import "SPSchool.h"
 
 @interface TimelineViewController ()
@@ -39,7 +40,19 @@
     // Notification for a successul user login
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(getSchoolForCurrentUser)
-                                                 name: kUserLoginWasSuccessfulNotification
+                                                 name: kSPUserLoginWasSuccessfulNotification
+                                               object: nil];
+    
+    // Notification for a user logout
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(removeViewsForUserLogout)
+                                                 name: kSPUserWantsLogoutNotification
+                                               object: nil];
+    
+    // Notification for a user delete account
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(removeViewsForUserLogout)
+                                                 name: kSPUserDidDeleteAccountNotification
                                                object: nil];
 }
 
@@ -57,7 +70,7 @@
         PFQuery *schoolQuery = [PFQuery queryWithClassName: @"School"];
         [schoolQuery setLimit: 1];
         
-        [schoolQuery getObjectInBackgroundWithId: [[[PFUser currentUser] objectForKey: @"school"] objectId]
+        [schoolQuery getObjectInBackgroundWithId: [[[PFUser currentUser] objectForKey: kSPUserSchoolKey] objectId]
                                            block: ^(PFObject *object, NSError *error)
         {
             if (!error)
@@ -105,9 +118,9 @@
 - (void) setupViewForCurrentUser
 {
     // School colors
-    CGFloat red = [[self.school.colors valueForKey: @"red"] floatValue] / 255.0f;
-    CGFloat green = [[self.school.colors valueForKey: @"green"] floatValue] / 255.0f;
-    CGFloat blue = [[self.school.colors valueForKey: @"blue"] floatValue] / 255.0f;
+    CGFloat red = [[self.school.colors valueForKey: kSPSchoolRedColorKey] floatValue] / 255.0f;
+    CGFloat green = [[self.school.colors valueForKey: kSPSchoolGreenColorKey] floatValue] / 255.0f;
+    CGFloat blue = [[self.school.colors valueForKey: kSPSchoolBlueColorKey] floatValue] / 255.0f;
     
     // Navigation bar properties
     [self.navigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics: UIBarMetricsDefault];
@@ -152,7 +165,7 @@
     [welcomeLabel setTextColor: [UIColor blackColor]];
     [welcomeLabel setTextAlignment: NSTextAlignmentCenter];
     
-    [welcomeLabel setText: [NSString stringWithFormat: @"Welcome, %@!", [[PFUser currentUser] objectForKey: @"name"]]];
+    [welcomeLabel setText: [NSString stringWithFormat: @"Welcome, %@!", [[PFUser currentUser] objectForKey: kSPUserNameKey]]];
     
     [self.view addSubview: welcomeLabel];
     
@@ -181,9 +194,9 @@
     UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController: settings];
     
     // School colors
-    CGFloat red = [[self.school.colors valueForKey: @"red"] floatValue] / 255.0f;
-    CGFloat green = [[self.school.colors valueForKey: @"green"] floatValue] / 255.0f;
-    CGFloat blue = [[self.school.colors valueForKey: @"blue"] floatValue] / 255.0f;
+    CGFloat red = [[self.school.colors valueForKey: kSPSchoolRedColorKey] floatValue] / 255.0f;
+    CGFloat green = [[self.school.colors valueForKey: kSPSchoolGreenColorKey] floatValue] / 255.0f;
+    CGFloat blue = [[self.school.colors valueForKey: kSPSchoolBlueColorKey] floatValue] / 255.0f;
     
     [settingsNavigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics: UIBarMetricsDefault];
     [settingsNavigationController.navigationBar setShadowImage: [UIImage new]];
@@ -208,7 +221,7 @@
     PFQuery *schoolQuery = [PFQuery queryWithClassName: @"School"];
     [schoolQuery setLimit: 1];
     
-    [schoolQuery getObjectInBackgroundWithId: [[[PFUser currentUser] objectForKey: @"school"] objectId]
+    [schoolQuery getObjectInBackgroundWithId: [[[PFUser currentUser] objectForKey: kSPUserSchoolKey] objectId]
                                        block: ^(PFObject *object, NSError *error)
      {
          if (!error)
@@ -222,6 +235,12 @@
      }];
     
     [self setupView];
+}
+
+- (void) removeViewsForUserLogout
+{
+    [self.navigationController setNavigationBarHidden: YES];
+    [self.view.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
 }
 
 - (void) dealloc

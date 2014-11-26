@@ -178,6 +178,7 @@
 		4E8711131A24BFA100F818C4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4E8F0F701A25147000A6E607 /* SPSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSettingsTableViewCell.h; path = Views/SPSettingsTableViewCell.h; sourceTree = "<group>"; };
 		4E8F0F711A25147000A6E607 /* SPSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSettingsTableViewCell.m; path = Views/SPSettingsTableViewCell.m; sourceTree = "<group>"; };
+		4EA2C13B1A261D9D00BFE089 /* SPConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPConstants.h; sourceTree = "<group>"; };
 		4EB037631A23D28A00A50B35 /* SPSchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSchool.h; path = Models/SPSchool.h; sourceTree = "<group>"; };
 		4EB037641A23D28A00A50B35 /* SPSchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSchool.m; path = Models/SPSchool.m; sourceTree = "<group>"; };
 		4EB037661A23D8A100A50B35 /* SPNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPNavigationTitleView.h; path = Views/SPNavigationTitleView.h; sourceTree = "<group>"; };
@@ -289,6 +290,7 @@
 				4E1A82DC1A17B53B0001F0E7 /* Info.plist */,
 				4E1A82DD1A17B53B0001F0E7 /* main.m */,
 				4EE294B61A1955F000022566 /* SPColors.h */,
+				4EA2C13B1A261D9D00BFE089 /* SPConstants.h */,
 				4E1A83011A17B5710001F0E7 /* Warnings.xcconfig */,
 			);
 			name = "Supporting Files";

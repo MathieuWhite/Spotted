@@ -41,28 +41,28 @@
     // Settings sections array
     NSMutableArray *sections = [NSMutableArray array];
     
-    // Dictionary for the preferences section
-    NSMutableDictionary *preferencesSection = [[NSMutableDictionary alloc] init];
-    [preferencesSection setValue: NSLocalizedString(@"General", nil) forKey: @"title"];
+    // Dictionary for the general section
+    NSMutableDictionary *generalSection = [[NSMutableDictionary alloc] init];
+    [generalSection setValue: NSLocalizedString(@"General", nil) forKey: @"title"];
     
-    // Dictionary for the support section
-    NSMutableDictionary *supportSection = [[NSMutableDictionary alloc] init];
-    [supportSection setValue: NSLocalizedString(@"Info", nil) forKey: @"title"];
+    // Dictionary for the info section
+    NSMutableDictionary *infoSection = [[NSMutableDictionary alloc] init];
+    [infoSection setValue: NSLocalizedString(@"Info", nil) forKey: @"title"];
     
     // Dictionary for the account section
     NSMutableDictionary *accountSection = [[NSMutableDictionary alloc] init];
     [accountSection setValue: NSLocalizedString(@"Account", nil) forKey: @"title"];
     
-    // Array of rows for the preferences section
-    NSMutableArray *preferencesRows = [NSMutableArray array];
-    [preferencesRows addObject: @"Settings 1"];
-    [preferencesRows addObject: @"Settings 2"];
-    [preferencesRows addObject: @"Settings 3"];
+    // Array of rows for the general section
+    NSMutableArray *generalRows = [NSMutableArray array];
+    [generalRows addObject: @"Settings 1"];
+    [generalRows addObject: @"Settings 2"];
+    [generalRows addObject: @"Settings 3"];
     
-    // Array of rows for the support section
-    NSMutableArray *supportRows = [NSMutableArray array];
-    [supportRows addObject: @"Help"];
-    [supportRows addObject: @"About"];
+    // Array of rows for the info section
+    NSMutableArray *infoRows = [NSMutableArray array];
+    [infoRows addObject: @"Help"];
+    [infoRows addObject: @"About"];
 
     // Array of rows for the account section
     NSMutableArray *accountRows = [NSMutableArray array];
@@ -70,13 +70,13 @@
     [accountRows addObject: @"Delete Account"];
     
     // Add each row array to their section
-    [preferencesSection setValue: preferencesRows forKey: @"rows"];
-    [supportSection setValue: supportRows forKey: @"rows"];
+    [generalSection setValue: generalRows forKey: @"rows"];
+    [infoSection setValue: infoRows forKey: @"rows"];
     [accountSection setValue: accountRows forKey: @"rows"];
 
     // Add each section to the settings array
-    [sections addObject: preferencesSection];
-    [sections addObject: supportSection];
+    [sections addObject: generalSection];
+    [sections addObject: infoSection];
     [sections addObject: accountSection];
     
     [self setSections: [sections copy]];

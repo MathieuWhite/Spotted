@@ -25,6 +25,9 @@
             dismissButtonTitle: (NSString *) dismissButtonTitle
              actionButtonTitle: (NSString *) actionButtonTitle;
 
+- (void) setTintColor: (UIColor *) color;
+- (void) setActionButtonTintColor: (UIColor *) color;
+
 @property (nonatomic, assign) id <AlertViewControllerDelegate> delegate;
 
 @end

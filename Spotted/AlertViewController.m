@@ -129,6 +129,19 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark - Public Instance Methods
+
+- (void) setTintColor: (UIColor *) color;
+{
+    [self.dismissButton setTintColor: color];
+    [self.actionButton setTintColor: color];
+}
+
+- (void) setActionButtonTintColor: (UIColor *) color
+{
+    [self.actionButton setTintColor: color];
+}
+
 #pragma mark - Private Instance methods
 
 - (void) setupButtons

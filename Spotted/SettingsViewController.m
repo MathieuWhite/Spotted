@@ -11,6 +11,7 @@
 #import "SPSettingsTableViewSectionHeader.h"
 #import "SPSettings.h"
 #import "SPColors.h"
+#import "SPConstants.h"
 
 @interface SettingsViewController ()
 
@@ -149,6 +150,14 @@
     
     [cell.textLabel setText: rowLabel];
     
+    // Account section
+    if ([indexPath section] == 2)
+    {
+        // Delete Account
+        if ([indexPath row] == 1)
+            [cell.textLabel setTextColor: [UIColor redColor]];
+    }
+    
     return cell;
 }
 
@@ -164,17 +173,6 @@
     return 32.0f;
 }
 
-- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
-{
-    [tableView deselectRowAtIndexPath: indexPath animated: YES];
-    
-    if ([indexPath row] == 0)
-        NSLog(@"logout");
-    
-    if ([indexPath row] == 1)
-        NSLog(@"delete account");
-}
-
 - (UIView *) tableView: (UITableView *) tableView viewForHeaderInSection: (NSInteger) section
 {
     SPSettingsTableViewSectionHeader *sectionHeader = [[SPSettingsTableViewSectionHeader alloc] init];
@@ -184,6 +182,98 @@
     [sectionHeader setTintColor: SPSettingsSectionHeaderTextColor];
     
     return sectionHeader;
+}
+
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    NSLog(@"didSelectRowAtIndexPath: %@", [[[self.settings.sections objectAtIndex:
+                                             [indexPath section]] valueForKey: @"rows"]
+                                                objectAtIndex: [indexPath row]]);
+    
+    // Account section
+    if ([indexPath section] == 2)
+    {
+        // Sign Out
+        if ([indexPath row] == 0)
+            [self confirmUserLogout];
+        
+        // Delete Account
+        if ([indexPath row] == 1)
+            [self confirmUserDelete];
+    }
+}
+
+#pragma mark - AlertViewControllerDelegate Methods
+
+- (void) alertViewController: (AlertViewController *) alertView didDismissWithButtonIndex: (NSInteger) buttonIndex
+{
+    // Sign Out Alert
+    if ([[alertView title] isEqualToString: NSLocalizedString(@"Sign Out", nil)])
+    {
+        // Yes Button
+        if (buttonIndex == 1)
+        {
+            [self userLogout];
+        }
+    }
+    
+    // Delete Account Alert
+    if ([[alertView title] isEqualToString: NSLocalizedString(@"Delete Account", nil)])
+    {
+        // Delete Button
+        if (buttonIndex == 1)
+        {
+            [self userDelete];
+        }
+    }
+}
+
+#pragma mark - Settings Selected Row Methods
+
+- (void) confirmUserLogout
+{
+    AlertViewController *logoutAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Sign Out", nil)
+                                                                          message: NSLocalizedString(@"Sign Out Message", nil)
+                                                                         delegate: self
+                                                               dismissButtonTitle: NSLocalizedString(@"No", nil)
+                                                                actionButtonTitle: NSLocalizedString(@"Yes", nil)];
+    
+    [self presentViewController: logoutAlert animated: YES completion: NULL];
+}
+
+- (void) userLogout
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName: kSPUserWantsLogoutNotification object: nil];
+
+    [PFUser logOut];
+    
+    [self dismissViewControllerAnimated: NO completion: NULL];
+}
+
+- (void) confirmUserDelete
+{
+    NSString *deleteMessage = [NSString stringWithFormat: NSLocalizedString(@"Delete Account Message", nil),
+                               [[PFUser currentUser] valueForKey: @"name"]];
+    
+    AlertViewController *deleteAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Delete Account", nil)
+                                                                          message: deleteMessage
+                                                                         delegate: self
+                                                               dismissButtonTitle: NSLocalizedString(@"Cancel", nil)
+                                                                actionButtonTitle: NSLocalizedString(@"Delete", nil)];
+    [deleteAlert setActionButtonTintColor: [UIColor redColor]];
+    
+    [self presentViewController: deleteAlert animated: YES completion: NULL];
+}
+
+- (void) userDelete
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName: kSPUserDidDeleteAccountNotification object: nil];
+
+    [[PFUser currentUser] deleteInBackground];
+    
+    [self dismissViewControllerAnimated: NO completion: NULL];
 }
 
 @end

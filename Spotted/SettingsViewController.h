@@ -6,8 +6,11 @@
 //  Copyright (c) 2014 Mathieu White. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Parse;
 
-@interface SettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+#import <UIKit/UIKit.h>
+#import "AlertViewController.h"
+
+@interface SettingsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AlertViewControllerDelegate>
 
 @end

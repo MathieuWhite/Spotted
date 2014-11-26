@@ -10,8 +10,6 @@
 
 #import "AlertViewController.h"
 
-static NSString * kUserLoginWasSuccessfulNotification = @"kUserLoginWasSuccessfulNotification";
-
 @protocol LoginViewControllerDelegate <NSObject>
 
 - (void) transitionFromLoginView;

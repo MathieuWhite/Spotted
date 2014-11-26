@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "SPSignUpTableView.h"
 #import "SPStrokeButton.h"
+#import "SPConstants.h"
 #import "SPSchool.h"
 
 @interface SignUpViewController ()
@@ -130,9 +131,9 @@
         PFUser *user = [PFUser user];
         [user setUsername: [[emailTextField text] lowercaseString]];
         [user setEmail: [[emailTextField text] lowercaseString]];
-        [user setObject: [nameTextField text] forKey: @"name"];
+        [user setObject: [nameTextField text] forKey: kSPUserNameKey];
         [user setPassword: [passwordTextField text]];
-        [user setObject: [self school] forKey: @"school"];
+        [user setObject: [self school] forKey: kSPUserSchoolKey];
         
         [user signUpInBackgroundWithBlock: ^(BOOL succeeded, NSError *error)
          {
@@ -149,7 +150,7 @@
              else
              {
                  AlertViewController *errorAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Error", nil)
-                                                                                      message: [error.userInfo objectForKey: @"error"]
+                                                                                      message: [error.userInfo objectForKey: kSPUserErrorKey]
                                                                                      delegate: self
                                                                            dismissButtonTitle: NSLocalizedString(@"Okay", nil)
                                                                             actionButtonTitle: nil];
@@ -196,7 +197,7 @@
     
     [self.availableSchools enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop)
      {
-         if ([domain isEqualToString: [[obj valueForKey: @"domain"] lowercaseString]])
+         if ([domain isEqualToString: [[obj valueForKey: kSPSchoolDomainKey] lowercaseString]])
          {
              [self setSchool: obj];
              schoolAvailable = YES;

@@ -10,6 +10,7 @@
 #import "SPLoginTableView.h"
 #import "SPStrokeButton.h"
 #import "SPColors.h"
+#import "SPConstants.h"
 #import "POP.h"
 
 @interface LoginViewController ()
@@ -19,7 +20,6 @@
 @property (nonatomic, weak) SPLoginTableView *loginTableView;
 @property (nonatomic, weak) SPStrokeButton *loginButton;
 @property (nonatomic, weak) UIButton *forgotPasswordButton;
-@property (nonatomic, weak) UILabel *noAccountLabel;
 @property (nonatomic, weak) UIButton *signUpButton;
 
 @end
@@ -63,17 +63,9 @@
     [forgotPasswordButton setTranslatesAutoresizingMaskIntoConstraints: NO];
     [forgotPasswordButton addTarget: self action: @selector(requestPasswordReset) forControlEvents: UIControlEventTouchUpInside];
     
-    // Initialize the no account label
-    UILabel *noAccountLabel = [[UILabel alloc] init];
-    [noAccountLabel setText: NSLocalizedString(@"Don't have an account?", nil)];
-    [noAccountLabel setFont: [UIFont fontWithName: @"Avenir-Light" size: 14.0f]];
-    [noAccountLabel setTextColor: SPWhiteColor60];
-    [noAccountLabel setTextAlignment: NSTextAlignmentRight];
-    [noAccountLabel setTranslatesAutoresizingMaskIntoConstraints: NO];
-    
     // Initialize the sign up button
     UIButton *signUpButton = [UIButton buttonWithType: UIButtonTypeSystem];
-    [signUpButton setTitle: NSLocalizedString(@"Sign up now", nil) forState: UIControlStateNormal];
+    [signUpButton setTitle: NSLocalizedString(@"Sign Up Button", nil) forState: UIControlStateNormal];
     [signUpButton setTintColor: [UIColor whiteColor]];
     [signUpButton.titleLabel setFont: [UIFont fontWithName: @"Avenir-Light" size: 14.0f]];
     [signUpButton setTranslatesAutoresizingMaskIntoConstraints: NO];
@@ -85,7 +77,6 @@
     [self.view addSubview: loginTableView];
     [self.view addSubview: loginButton];
     [self.view addSubview: forgotPasswordButton];
-    [self.view addSubview: noAccountLabel];
     [self.view addSubview: signUpButton];
     
     // Set each component to a property
@@ -94,7 +85,6 @@
     [self setLoginTableView: loginTableView];
     [self setLoginButton: loginButton];
     [self setForgotPasswordButton: forgotPasswordButton];
-    [self setNoAccountLabel: noAccountLabel];
     [self setSignUpButton: signUpButton];
     
     // Auto Layout
@@ -122,7 +112,7 @@
              if (user)
              {
                  // Check user email verification
-                 if (![[user objectForKey: @"emailVerified"] boolValue])
+                 if (![[user objectForKey: kSPUserEmailVerifiedKey] boolValue])
                  {
                      AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Email Not Verified", nil)
                                                                                      message: NSLocalizedString(@"Email Not Verified Message", nil)
@@ -137,14 +127,14 @@
                  
                  else
                  {
-                     [[NSNotificationCenter defaultCenter] postNotificationName: kUserLoginWasSuccessfulNotification object: nil];
+                     [[NSNotificationCenter defaultCenter] postNotificationName: kSPUserLoginWasSuccessfulNotification object: nil];
                      [self dismissViewControllerAnimated: YES completion: NULL];
                  }
              }
              else
              {
                  // Something went wrong
-                 NSString *errorString = [[error userInfo] objectForKey: @"error"];
+                 NSString *errorString = [[error userInfo] objectForKey: kSPUserErrorKey];
                  
                  AlertViewController *errorAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Error", nil)
                                                                                       message: errorString
@@ -292,41 +282,14 @@
                                                           multiplier: 1.0f
                                                             constant: 22.0f]];
     
-    // No Account Label Right
-    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.noAccountLabel
-                                                           attribute: NSLayoutAttributeHeight
+    // Sign Up Button Center X
+    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.signUpButton
+                                                           attribute: NSLayoutAttributeCenterX
                                                            relatedBy: NSLayoutRelationEqual
-                                                              toItem: self.signUpButton
-                                                           attribute: NSLayoutAttributeHeight
+                                                              toItem: self.view
+                                                           attribute: NSLayoutAttributeCenterX
                                                           multiplier: 1.0f
                                                             constant: 0.0f]];
-    
-    // No Account Label Right
-    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.noAccountLabel
-                                                           attribute: NSLayoutAttributeRight
-                                                           relatedBy: NSLayoutRelationEqual
-                                                              toItem: self.signUpButton
-                                                           attribute: NSLayoutAttributeLeft
-                                                          multiplier: 1.0f
-                                                            constant: -6.0f]];
-    
-    // No Account Label Bottom
-    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.noAccountLabel
-                                                           attribute: NSLayoutAttributeBottom
-                                                           relatedBy: NSLayoutRelationEqual
-                                                              toItem: self.view
-                                                           attribute: NSLayoutAttributeBottom
-                                                          multiplier: 1.0f
-                                                            constant: -20.0f]];
-    
-    // Sign Up Button Right
-    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.signUpButton
-                                                           attribute: NSLayoutAttributeRight
-                                                           relatedBy: NSLayoutRelationEqual
-                                                              toItem: self.view
-                                                           attribute: NSLayoutAttributeRight
-                                                          multiplier: 1.0f
-                                                            constant: -48.0f]];
     
     // Sign Up Button Bottom
     [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.signUpButton
@@ -354,10 +317,10 @@
             {
                 if (error)
                 {
-                    NSLog(@"Error: %@", [error valueForKey: @"error"]);
+                    NSLog(@"Error: %@", [error valueForKey: kSPUserErrorKey]);
                     
                     UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle: NSLocalizedString(@"Error", nil)
-                                                                         message: [error valueForKey: @"error"]
+                                                                         message: [error valueForKey: kSPUserErrorKey]
                                                                         delegate: self
                                                                cancelButtonTitle: NSLocalizedString(@"Okay", nil)
                                                                otherButtonTitles: nil];

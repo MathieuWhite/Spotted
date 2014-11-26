@@ -12,7 +12,7 @@
 "Sign In" = "Se Connecter";
 "Forgot your password?" = "Mot de passe oublié?";
 "Don't have an account?" = "Pas de compte?";
-"Sign up now" = "Inscrivez-vous";
+"Sign Up Button" = "Vous inscrire à Secret App";
 /** LoginViewController.m **/
 
 /** SignUpViewController.m **/
@@ -30,6 +30,13 @@
 "General" = "GÉNÉRAL";
 "Info" = "INFO";
 "Account" = "COMPTE";
+"No" = "Non";
+"Yes" = "Oui";
+"Sign Out" = "Se Déconnecter";
+"Sign Out Message"= "Êtes-vous certain de vouloir vous déconnecter?";
+"Delete Account" = "Supprimer Votre Compte";
+"Delete Account Message" = "%@, êtes-vous certain de vouloir supprimer votre compte sur Secret App?";
+"Delete" = "Supprimer";
 /** SettingsViewController.m **/
 
 // Views
