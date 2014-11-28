@@ -9,6 +9,7 @@
 #import "SignUpViewController.h"
 #import "SPSignUpTableView.h"
 #import "SPStrokeButton.h"
+#import "SPProgressHUD.h"
 #import "SPConstants.h"
 #import "SPSchool.h"
 
@@ -128,6 +129,9 @@
         if (![self validatePassword: [passwordTextField text]])
             return;
         
+        SPProgressHUD *progressHUD = [[SPProgressHUD alloc] initWithTitle: @"Signing Up..." style: SPProgressHUDStyleLight];
+        [progressHUD showInView: self.view];
+        
         PFUser *user = [PFUser user];
         [user setUsername: [[emailTextField text] lowercaseString]];
         [user setEmail: [[emailTextField text] lowercaseString]];
@@ -139,23 +143,31 @@
          {
              if (!error)
              {
+                 [progressHUD removeFromSuperview];
+
                  AlertViewController *successAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Success", nil)
                                                                                         message: NSLocalizedString(@"Success Message", nil)
                                                                                        delegate: self
                                                                              dismissButtonTitle: NSLocalizedString(@"Okay", nil)
                                                                               actionButtonTitle: nil];
                                   
-                 [self presentViewController: successAlert animated: YES completion: NULL];
+                 [self presentViewController: successAlert animated: YES completion: ^{
+                     [self.view setUserInteractionEnabled: YES];
+                 }];
              }
              else
              {
+                 [progressHUD removeFromSuperview];
+
                  AlertViewController *errorAlert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Error", nil)
                                                                                       message: [error.userInfo objectForKey: kSPUserErrorKey]
                                                                                      delegate: self
                                                                            dismissButtonTitle: NSLocalizedString(@"Okay", nil)
                                                                             actionButtonTitle: nil];
                  
-                 [self presentViewController: errorAlert animated: YES completion: NULL];
+                 [self presentViewController: errorAlert animated: YES completion: ^{
+                     [self.view setUserInteractionEnabled: YES];
+                 }];
              }
              
              [PFUser logOut];

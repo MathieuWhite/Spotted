@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "SPLoginTableView.h"
 #import "SPStrokeButton.h"
+#import "SPProgressHUD.h"
 #import "SPColors.h"
 #import "SPConstants.h"
 #import "POP.h"
@@ -104,6 +105,9 @@
     // Check if both username and password fields are filled
     if ([emailTextField.text length] && [passwordTextField.text length])
     {
+        SPProgressHUD *progressHUD = [[SPProgressHUD alloc] initWithTitle: @"Signing In..." style: SPProgressHUDStyleLight];
+        [progressHUD showInView: self.view];
+        
         // Begin the login process
         [PFUser logInWithUsernameInBackground: [[emailTextField text] lowercaseString]
                                      password: [passwordTextField text]
@@ -114,15 +118,19 @@
                  // Check user email verification
                  if (![[user objectForKey: kSPUserEmailVerifiedKey] boolValue])
                  {
+                     [PFUser logOut];
+                     
+                     [progressHUD removeFromSuperview];
+
                      AlertViewController *alert = [[AlertViewController alloc] initWithTitle: NSLocalizedString(@"Email Not Verified", nil)
                                                                                      message: NSLocalizedString(@"Email Not Verified Message", nil)
                                                                                     delegate: self
                                                                           dismissButtonTitle: NSLocalizedString(@"Okay", nil)
                                                                            actionButtonTitle: nil];
                      
-                     [self presentViewController: alert animated: YES completion: NULL];
-                     
-                     [PFUser logOut];
+                     [self presentViewController: alert animated: YES completion: ^{
+                         [self.view setUserInteractionEnabled: YES];
+                     }];
                  }
                  
                  else
@@ -133,6 +141,8 @@
              }
              else
              {
+                 [progressHUD removeFromSuperview];
+
                  // Something went wrong
                  NSString *errorString = [[error userInfo] objectForKey: kSPUserErrorKey];
                  
@@ -142,7 +152,9 @@
                                                                            dismissButtonTitle: NSLocalizedString(@"Okay", nil)
                                                                             actionButtonTitle: nil];
                  
-                 [self presentViewController: errorAlert animated: YES completion: NULL];
+                 [self presentViewController: errorAlert animated: YES completion: ^{
+                     [self.view setUserInteractionEnabled: YES];
+                 }];
              }
          }];
         

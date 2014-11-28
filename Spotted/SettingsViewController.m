@@ -12,6 +12,7 @@
 #import "SPSettings.h"
 #import "SPColors.h"
 #import "SPConstants.h"
+#import "SPProgressHUD.h"
 
 @interface SettingsViewController ()
 
@@ -203,6 +204,10 @@
         if ([indexPath row] == 1)
             [self confirmUserDelete];
     }
+    else
+    {
+        
+    }
 }
 
 #pragma mark - AlertViewControllerDelegate Methods
@@ -262,7 +267,7 @@
                                                                          delegate: self
                                                                dismissButtonTitle: NSLocalizedString(@"Cancel", nil)
                                                                 actionButtonTitle: NSLocalizedString(@"Delete", nil)];
-    [deleteAlert setActionButtonTintColor: [UIColor redColor]];
+    [deleteAlert setDestructive: YES];
     
     [self presentViewController: deleteAlert animated: YES completion: NULL];
 }

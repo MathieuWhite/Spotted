@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E0043531A255C7B00F4962F /* SPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0043521A255C7B00F4962F /* SPSettings.m */; };
 		4E0043561A256C0800F4962F /* SPSettingsTableViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0043551A256C0800F4962F /* SPSettingsTableViewSectionHeader.m */; };
+		4E04C7421A28B3F900412642 /* SPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7411A28B3F900412642 /* SPLoadingView.m */; };
 		4E1A82DE1A17B53B0001F0E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A82DD1A17B53B0001F0E7 /* main.m */; };
 		4E1A82E11A17B53B0001F0E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A82E01A17B53B0001F0E7 /* AppDelegate.m */; };
 		4E1A82E91A17B53B0001F0E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1A82E81A17B53B0001F0E7 /* Images.xcassets */; };
@@ -58,6 +59,7 @@
 		4ED4A0FB1A20D08D002D1B59 /* AlertPresentingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED4A0FA1A20D08D002D1B59 /* AlertPresentingAnimator.m */; };
 		4ED4A0FE1A20D1B8002D1B59 /* AlertDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED4A0FD1A20D1B8002D1B59 /* AlertDismissingAnimator.m */; };
 		4ED4A1011A20D244002D1B59 /* AlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED4A1001A20D244002D1B59 /* AlertViewController.m */; };
+		4ED698B31A2756950021CAD7 /* SPProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED698B21A2756950021CAD7 /* SPProgressHUD.m */; };
 		4EE294B51A1950BE00022566 /* SPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE294B41A1950BE00022566 /* SPTextField.m */; };
 		4EE294BD1A19832800022566 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE294BC1A19832800022566 /* SignUpViewController.m */; };
 		4EE6F7D71A1AC8CA0084F64E /* SPAuthenticationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6F7D61A1AC8CA0084F64E /* SPAuthenticationTableViewCell.m */; };
@@ -83,6 +85,8 @@
 		4E0043521A255C7B00F4962F /* SPSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSettings.m; path = Models/SPSettings.m; sourceTree = "<group>"; };
 		4E0043541A256C0800F4962F /* SPSettingsTableViewSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSettingsTableViewSectionHeader.h; path = Views/SPSettingsTableViewSectionHeader.h; sourceTree = "<group>"; };
 		4E0043551A256C0800F4962F /* SPSettingsTableViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSettingsTableViewSectionHeader.m; path = Views/SPSettingsTableViewSectionHeader.m; sourceTree = "<group>"; };
+		4E04C7401A28B3F900412642 /* SPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPLoadingView.h; path = Views/SPLoadingView.h; sourceTree = "<group>"; };
+		4E04C7411A28B3F900412642 /* SPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPLoadingView.m; path = Views/SPLoadingView.m; sourceTree = "<group>"; };
 		4E1A82D81A17B53B0001F0E7 /* Spotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1A82DC1A17B53B0001F0E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E1A82DD1A17B53B0001F0E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 		4ED4A0FD1A20D1B8002D1B59 /* AlertDismissingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertDismissingAnimator.m; path = Animators/AlertDismissingAnimator.m; sourceTree = "<group>"; };
 		4ED4A0FF1A20D244002D1B59 /* AlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewController.h; sourceTree = "<group>"; };
 		4ED4A1001A20D244002D1B59 /* AlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewController.m; sourceTree = "<group>"; };
+		4ED698B11A2756950021CAD7 /* SPProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPProgressHUD.h; path = Views/SPProgressHUD.h; sourceTree = "<group>"; };
+		4ED698B21A2756950021CAD7 /* SPProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPProgressHUD.m; path = Views/SPProgressHUD.m; sourceTree = "<group>"; };
 		4EE294B31A1950BE00022566 /* SPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPTextField.h; path = Views/SPTextField.h; sourceTree = "<group>"; };
 		4EE294B41A1950BE00022566 /* SPTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPTextField.m; path = Views/SPTextField.m; sourceTree = "<group>"; };
 		4EE294B61A1955F000022566 /* SPColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPColors.h; sourceTree = "<group>"; };
@@ -424,10 +430,14 @@
 				4EE6F7D61A1AC8CA0084F64E /* SPAuthenticationTableViewCell.m */,
 				4E1A83F51A1933700001F0E7 /* SPFlatButton.h */,
 				4E1A83F61A1933700001F0E7 /* SPFlatButton.m */,
+				4E04C7401A28B3F900412642 /* SPLoadingView.h */,
+				4E04C7411A28B3F900412642 /* SPLoadingView.m */,
 				4EE6F7D81A1ACD2C0084F64E /* SPLoginTableView.h */,
 				4EE6F7D91A1ACD2C0084F64E /* SPLoginTableView.m */,
 				4EB037661A23D8A100A50B35 /* SPNavigationTitleView.h */,
 				4EB037671A23D8A100A50B35 /* SPNavigationTitleView.m */,
+				4ED698B11A2756950021CAD7 /* SPProgressHUD.h */,
+				4ED698B21A2756950021CAD7 /* SPProgressHUD.m */,
 				4E8F0F701A25147000A6E607 /* SPSettingsTableViewCell.h */,
 				4E8F0F711A25147000A6E607 /* SPSettingsTableViewCell.m */,
 				4E0043541A256C0800F4962F /* SPSettingsTableViewSectionHeader.h */,
@@ -592,6 +602,7 @@
 				4E1A83DA1A1902590001F0E7 /* POPAnimationExtras.mm in Sources */,
 				4E1A83481A18FE680001F0E7 /* LoginViewController.m in Sources */,
 				4E1A83E31A1902590001F0E7 /* POPLayerExtras.mm in Sources */,
+				4ED698B31A2756950021CAD7 /* SPProgressHUD.m in Sources */,
 				4EE6F7DA1A1ACD2C0084F64E /* SPLoginTableView.m in Sources */,
 				4E8711141A24BFA100F818C4 /* SettingsViewController.m in Sources */,
 				4EB037681A23D8A100A50B35 /* SPNavigationTitleView.m in Sources */,
@@ -622,6 +633,7 @@
 				4E1A83DF1A1902590001F0E7 /* POPCGUtils.mm in Sources */,
 				4ED4A0FE1A20D1B8002D1B59 /* AlertDismissingAnimator.m in Sources */,
 				4E1A83F71A1933700001F0E7 /* SPFlatButton.m in Sources */,
+				4E04C7421A28B3F900412642 /* SPLoadingView.m in Sources */,
 				4EE294BD1A19832800022566 /* SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

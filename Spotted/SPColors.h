@@ -10,6 +10,7 @@
 #define Spotted_SPColors_h
 
 #define SPWhiteColor60 [UIColor colorWithWhite: 1.0f alpha: 0.6f]
+#define SPBlackColor20 [UIColor colorWithWhite: 0.0f alpha: 0.2f]
 #define SPGrayBackgroundColor [UIColor colorWithRed: 245.0f/255.0f green: 245.0f/255.0f blue: 245.0f/255.0f alpha: 1.0f]
 #define SPCellSeparatorColor [UIColor colorWithRed: 229.0f/255.0f green: 229.0f/255.0f blue: 229.0f/255.0f alpha: 1.0f]
 #define SPCellSelectionColor [UIColor colorWithRed: 229.0f/255.0f green: 229.0f/255.0f blue: 229.0f/255.0f alpha: 1.0f]

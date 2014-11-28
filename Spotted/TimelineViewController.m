@@ -13,6 +13,7 @@
 #import "SPColors.h"
 #import "SPConstants.h"
 #import "SPSchool.h"
+#import "SPLoadingView.h"
 
 @interface TimelineViewController ()
 
@@ -20,6 +21,8 @@
 
 @property (nonatomic, weak) SPNavigationTitleView *titleView;
 @property (nonatomic, weak) UILabel *welcomeLabel;
+
+@property (nonatomic, weak) SPLoadingView *loadingIndicator;
 
 @property (nonatomic, getter = isPresentingView) BOOL presentingView;
 
@@ -75,8 +78,12 @@
         {
             if (!error)
             {
+                [self.loadingIndicator removeFromSuperview];
                 [self setSchool: (SPSchool *) object];
-                [self setupViewForCurrentUser];
+                
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self setupViewForCurrentUser];
+                });
             }
             
             else
@@ -113,6 +120,31 @@
 - (void) setupView
 {
     [self.view setBackgroundColor: SPGrayBackgroundColor];
+    
+    // Show the loading indicator
+    SPLoadingView *loadingIndicator = [SPLoadingView sharedLoadingIndicator];
+    [loadingIndicator setTintColor: SPBlackColor20];
+    [loadingIndicator showInView: self.view];
+    
+    // Center X
+    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: loadingIndicator
+                                                           attribute: NSLayoutAttributeCenterX
+                                                           relatedBy: NSLayoutRelationEqual
+                                                              toItem: self.view
+                                                           attribute: NSLayoutAttributeCenterX
+                                                          multiplier: 1.0f
+                                                            constant: 0.0f]];
+    
+    // Center Y
+    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: loadingIndicator
+                                                           attribute: NSLayoutAttributeCenterY
+                                                           relatedBy: NSLayoutRelationEqual
+                                                              toItem: self.view
+                                                           attribute: NSLayoutAttributeCenterY
+                                                          multiplier: 1.0f
+                                                            constant: 0.0f]];
+    
+    [self setLoadingIndicator: loadingIndicator];
 }
 
 - (void) setupViewForCurrentUser
@@ -123,6 +155,7 @@
     CGFloat blue = [[self.school.colors valueForKey: kSPSchoolBlueColorKey] floatValue] / 255.0f;
     
     // Navigation bar properties
+    [self.navigationController.view setBackgroundColor: SPGrayBackgroundColor];
     [self.navigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics: UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage: [UIImage new]];
     [self.navigationController.navigationBar setTranslucent: NO];
@@ -154,7 +187,7 @@
     [self.navigationItem setRightBarButtonItem: conversationsIcon];
 
     // Show the navigation bar
-    [self.navigationController setNavigationBarHidden: NO];
+    //[self.navigationController setNavigationBarHidden: NO];
     
     // Set the background colorg
     [self.view setBackgroundColor: SPGrayBackgroundColor];
@@ -164,8 +197,8 @@
     [welcomeLabel setFrame: CGRectMake(0, 60, CGRectGetWidth([self.view bounds]), 44)];
     [welcomeLabel setTextColor: [UIColor blackColor]];
     [welcomeLabel setTextAlignment: NSTextAlignmentCenter];
-    
     [welcomeLabel setText: [NSString stringWithFormat: @"Welcome, %@!", [[PFUser currentUser] objectForKey: kSPUserNameKey]]];
+    [welcomeLabel setAlpha: 0.0f];
     
     [self.view addSubview: welcomeLabel];
     
@@ -175,12 +208,25 @@
     
     // Auto Layout
     [self setupConstraints];
+    
+    // Animate the content
+    [self animateContent];
 }
 
-#pragma mark - Auto Layout Methods
+#pragma mark - Private Instance Methods
 
-- (void) setupConstraints
+- (void) animateContent
 {
+    // Show the navigation bar
+    [self.navigationController setNavigationBarHidden: NO animated: YES];
+    
+    [UIView animateWithDuration: 0.4
+                          delay: 0.4
+                        options: UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         [self.welcomeLabel setAlpha: 1.0f];
+                     }
+                     completion: NULL];
 }
 
 #pragma mark - BarButtonItem Methods
@@ -214,6 +260,12 @@
     NSLog(@"showConversations");
 }
 
+#pragma mark - Auto Layout Methods
+
+- (void) setupConstraints
+{
+}
+
 #pragma mark - Notification Methods
 
 - (void) getSchoolForCurrentUser
@@ -226,8 +278,12 @@
      {
          if (!error)
          {
+             [self.loadingIndicator removeFromSuperview];
              [self setSchool: (SPSchool *) object];
-             [self setupViewForCurrentUser];
+             
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 [self setupViewForCurrentUser];
+             });
          }
          
          else

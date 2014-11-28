@@ -9,7 +9,6 @@
 #import "AlertViewController.h"
 #import "AlertPresentingAnimator.h"
 #import "AlertDismissingAnimator.h"
-#import "SPFlatButton.h"
 
 @interface AlertViewController ()
 
@@ -134,12 +133,16 @@
 - (void) setTintColor: (UIColor *) color;
 {
     [self.dismissButton setTintColor: color];
-    [self.actionButton setTintColor: color];
+    
+    if (![self isDestructive])
+        [self.actionButton setTintColor: color];
 }
 
-- (void) setActionButtonTintColor: (UIColor *) color
+- (void) setDestructive: (BOOL) destructive
 {
-    [self.actionButton setTintColor: color];
+    _destructive = destructive;
+    
+    [self.actionButton setTintColor: [UIColor redColor]];
 }
 
 #pragma mark - Private Instance methods
