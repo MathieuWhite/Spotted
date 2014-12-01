@@ -10,6 +10,8 @@
 		4E0043531A255C7B00F4962F /* SPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0043521A255C7B00F4962F /* SPSettings.m */; };
 		4E0043561A256C0800F4962F /* SPSettingsTableViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0043551A256C0800F4962F /* SPSettingsTableViewSectionHeader.m */; };
 		4E04C7421A28B3F900412642 /* SPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7411A28B3F900412642 /* SPLoadingView.m */; };
+		4E17D10E1A2BFB5A00C239B9 /* SPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17D10D1A2BFB5A00C239B9 /* SPPost.m */; };
+		4E17D1111A2C0C3A00C239B9 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17D1101A2C0C3A00C239B9 /* ComposeViewController.m */; };
 		4E1A82DE1A17B53B0001F0E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A82DD1A17B53B0001F0E7 /* main.m */; };
 		4E1A82E11A17B53B0001F0E7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A82E01A17B53B0001F0E7 /* AppDelegate.m */; };
 		4E1A82E91A17B53B0001F0E7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1A82E81A17B53B0001F0E7 /* Images.xcassets */; };
@@ -87,6 +89,10 @@
 		4E0043551A256C0800F4962F /* SPSettingsTableViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSettingsTableViewSectionHeader.m; path = Views/SPSettingsTableViewSectionHeader.m; sourceTree = "<group>"; };
 		4E04C7401A28B3F900412642 /* SPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPLoadingView.h; path = Views/SPLoadingView.h; sourceTree = "<group>"; };
 		4E04C7411A28B3F900412642 /* SPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPLoadingView.m; path = Views/SPLoadingView.m; sourceTree = "<group>"; };
+		4E17D10C1A2BFB5A00C239B9 /* SPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPost.h; path = Models/SPPost.h; sourceTree = "<group>"; };
+		4E17D10D1A2BFB5A00C239B9 /* SPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPPost.m; path = Models/SPPost.m; sourceTree = "<group>"; };
+		4E17D10F1A2C0C3A00C239B9 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
+		4E17D1101A2C0C3A00C239B9 /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		4E1A82D81A17B53B0001F0E7 /* Spotted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1A82DC1A17B53B0001F0E7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E1A82DD1A17B53B0001F0E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -268,6 +274,8 @@
 				4ED4A1001A20D244002D1B59 /* AlertViewController.m */,
 				4E424F061A1A5EA800AB1922 /* AuthenticationViewController.h */,
 				4E424F071A1A5EA800AB1922 /* AuthenticationViewController.m */,
+				4E17D10F1A2C0C3A00C239B9 /* ComposeViewController.h */,
+				4E17D1101A2C0C3A00C239B9 /* ComposeViewController.m */,
 				4E1A83461A18FE670001F0E7 /* LoginViewController.h */,
 				4E1A83471A18FE680001F0E7 /* LoginViewController.m */,
 				4E8711121A24BFA100F818C4 /* SettingsViewController.h */,
@@ -455,6 +463,8 @@
 		4E249D561A238DC20040C1F9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4E17D10C1A2BFB5A00C239B9 /* SPPost.h */,
+				4E17D10D1A2BFB5A00C239B9 /* SPPost.m */,
 				4EB037631A23D28A00A50B35 /* SPSchool.h */,
 				4EB037641A23D28A00A50B35 /* SPSchool.m */,
 				4E0043511A255C7B00F4962F /* SPSettings.h */,
@@ -595,6 +605,7 @@
 				4E1A83DE1A1902590001F0E7 /* POPBasicAnimation.mm in Sources */,
 				4E1A83E11A1902590001F0E7 /* POPDecayAnimation.mm in Sources */,
 				4EE6F7E01A1AEBC50084F64E /* SPStrokeButton.m in Sources */,
+				4E17D1111A2C0C3A00C239B9 /* ComposeViewController.m in Sources */,
 				4ED4A0FB1A20D08D002D1B59 /* AlertPresentingAnimator.m in Sources */,
 				4EB037651A23D28A00A50B35 /* SPSchool.m in Sources */,
 				4EE6F7DD1A1AD91C0084F64E /* SPSignUpTableView.m in Sources */,
@@ -608,6 +619,7 @@
 				4EB037681A23D8A100A50B35 /* SPNavigationTitleView.m in Sources */,
 				4E1A82E11A17B53B0001F0E7 /* AppDelegate.m in Sources */,
 				4E1A83D71A1902590001F0E7 /* POPAnimatableProperty.mm in Sources */,
+				4E17D10E1A2BFB5A00C239B9 /* SPPost.m in Sources */,
 				4E1A83E51A1902590001F0E7 /* POPPropertyAnimation.mm in Sources */,
 				4E1A83E61A1902590001F0E7 /* POPSpringAnimation.mm in Sources */,
 				4E1A83E01A1902590001F0E7 /* POPCustomAnimation.mm in Sources */,

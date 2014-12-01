@@ -6,9 +6,7 @@
 //  Copyright (c) 2014 Mathieu White. All rights reserved.
 //
 
-@import Parse;
-
-#import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @interface SPSchool : PFObject <PFSubclassing>
 

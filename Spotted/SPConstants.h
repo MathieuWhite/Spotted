@@ -25,8 +25,17 @@ static NSString * const kSPUserErrorKey = @"error";
 #pragma mark - PFObject School Class
 
 // Keys
+static NSString * const kSPSchoolClassName = @"School";
 static NSString * const kSPSchoolNameKey = @"name";
 static NSString * const kSPSchoolDomainKey = @"domain";
 static NSString * const kSPSchoolRedColorKey = @"red";
 static NSString * const kSPSchoolGreenColorKey = @"green";
 static NSString * const kSPSchoolBlueColorKey = @"blue";
+
+#pragma mark - PFObject Post Class
+
+// Keys
+static NSString * const kSPPostClassName = @"Post";
+static NSString * const kSPPostContentKey = @"content";
+static NSString * const kSPPostUserKey = @"user";
+static NSString * const kSPPostSchoolKey = @"school";

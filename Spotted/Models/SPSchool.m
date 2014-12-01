@@ -7,6 +7,7 @@
 //
 
 #import "SPSchool.h"
+#import "SPConstants.h"
 
 @implementation SPSchool
 
@@ -22,7 +23,7 @@
 
 + (NSString *) parseClassName
 {
-    return @"School";
+    return kSPSchoolClassName;
 }
 
 @end

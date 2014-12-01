@@ -13,6 +13,7 @@
 "Forgot your password?" = "Mot de passe oublié?";
 "Don't have an account?" = "Pas de compte?";
 "Sign Up Button" = "Vous inscrire à Secret App";
+"Signing In..." = "Connexion en cours...";
 /** LoginViewController.m **/
 
 /** SignUpViewController.m **/
@@ -20,6 +21,7 @@
 "Sign Up" = "S'inscrire";
 "Email Subject" = "Demande d'ajout d'école";
 "Message Body" = "Bonjour Mathieu,\nS'il vous plaît ajouter [mon école] sur Secret App!\nMerci.";
+"Creating Your Account..." = "Inscription en cours...";
 /** SignUpViewController.m **/
 
 /** TimelineViewController.m **/

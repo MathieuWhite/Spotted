@@ -9,11 +9,13 @@
 #import "TimelineViewController.h"
 #import "AuthenticationViewController.h"
 #import "SettingsViewController.h"
+#import "ComposeViewController.h"
 #import "SPNavigationTitleView.h"
 #import "SPColors.h"
 #import "SPConstants.h"
 #import "SPSchool.h"
 #import "SPLoadingView.h"
+#import "SPPost.h"
 
 @interface TimelineViewController ()
 
@@ -70,7 +72,9 @@
     // Verify if a user is logged in
     if ([PFUser currentUser])
     {
-        PFQuery *schoolQuery = [PFQuery queryWithClassName: @"School"];
+        __weak typeof(self) weakSelf = self;
+        
+        PFQuery *schoolQuery = [PFQuery queryWithClassName: kSPSchoolClassName];
         [schoolQuery setLimit: 1];
         
         [schoolQuery getObjectInBackgroundWithId: [[[PFUser currentUser] objectForKey: kSPUserSchoolKey] objectId]
@@ -78,11 +82,13 @@
         {
             if (!error)
             {
-                [self.loadingIndicator removeFromSuperview];
-                [self setSchool: (SPSchool *) object];
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                
+                [strongSelf.loadingIndicator removeFromSuperview];
+                [strongSelf setSchool: (SPSchool *) object];
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self setupViewForCurrentUser];
+                    [strongSelf setupViewForCurrentUser];
                 });
             }
             
@@ -211,9 +217,58 @@
     
     // Animate the content
     [self animateContent];
+    
+    // Test Post
+    [self postTesting];
 }
 
 #pragma mark - Private Instance Methods
+
+- (void) postTesting
+{
+    // Posting
+    /*
+    SPPost *post = [SPPost object];
+    [post setContent: @"This is a different post!"];
+    [post setUser: [PFUser currentUser]];
+    [post setSchool: [self school]];
+    
+    // Posts are public, and may not be modified after posting
+    PFACL *postACL = [PFACL ACLWithUser: [PFUser currentUser]];
+    [postACL setPublicReadAccess: YES];
+    [postACL setPublicWriteAccess: NO];
+    [post setACL: postACL];
+    
+    // Save the Post Object
+    [post saveInBackgroundWithBlock: ^(BOOL succeeded, NSError *error) {
+        if (!error)
+            NSLog(@"Test post was successful");
+        else
+            NSLog(@"ERROR: %@", [error description]);
+    }];
+     */
+    
+    // Retrieving
+    __weak typeof(self) weakSelf = self;
+    
+    PFQuery *postQuery = [PFQuery queryWithClassName: kSPPostClassName];
+    [postQuery setLimit: 100]; // 100 is the default limit
+    [postQuery whereKey: kSPPostSchoolKey equalTo: [self school]];
+    
+    [postQuery findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            __strong typeof(weakSelf) strongSelf = weakSelf;
+
+            [objects enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+                [strongSelf.welcomeLabel setText: [NSString stringWithFormat: @"%@", [(SPPost *) obj content]]];
+            }];
+        }
+        else
+            NSLog(@"ERROR: %@", [error description]);
+    }];
+    
+}
 
 - (void) animateContent
 {
@@ -234,8 +289,6 @@
 - (void) showSettings
 {
     SettingsViewController *settings = [[SettingsViewController alloc] init];
-    [settings setModalTransitionStyle: UIModalTransitionStyleCoverVertical];
-    [settings setModalPresentationStyle: UIModalPresentationCurrentContext];
     
     UINavigationController *settingsNavigationController = [[UINavigationController alloc] initWithRootViewController: settings];
     
@@ -249,8 +302,7 @@
     [settingsNavigationController.navigationBar setTranslucent: NO];
     [settingsNavigationController.navigationBar setBarTintColor: [UIColor colorWithRed: red green: green blue: blue alpha: 1.0f]];
     
-    [self presentViewController: settingsNavigationController animated: YES completion: ^
-    {
+    [self presentViewController: settingsNavigationController animated: YES completion: ^{
         [self setPresentingView: YES];
     }];
 }
@@ -258,6 +310,25 @@
 - (void) showConversations
 {
     NSLog(@"showConversations");
+    
+    // show compose until compose button is finished
+    ComposeViewController *compose = [[ComposeViewController alloc] init];
+    
+    UINavigationController *composeNavigationController = [[UINavigationController alloc] initWithRootViewController: compose];
+    
+    // School colors
+    CGFloat red = [[self.school.colors valueForKey: kSPSchoolRedColorKey] floatValue] / 255.0f;
+    CGFloat green = [[self.school.colors valueForKey: kSPSchoolGreenColorKey] floatValue] / 255.0f;
+    CGFloat blue = [[self.school.colors valueForKey: kSPSchoolBlueColorKey] floatValue] / 255.0f;
+    
+    [composeNavigationController.navigationBar setBackgroundImage: [UIImage new] forBarMetrics: UIBarMetricsDefault];
+    [composeNavigationController.navigationBar setShadowImage: [UIImage new]];
+    [composeNavigationController.navigationBar setTranslucent: NO];
+    [composeNavigationController.navigationBar setBarTintColor: [UIColor colorWithRed: red green: green blue: blue alpha: 1.0f]];
+    
+    [self presentViewController: composeNavigationController animated: YES completion: ^{
+         [self setPresentingView: YES];
+    }];
 }
 
 #pragma mark - Auto Layout Methods
@@ -270,7 +341,9 @@
 
 - (void) getSchoolForCurrentUser
 {
-    PFQuery *schoolQuery = [PFQuery queryWithClassName: @"School"];
+    __weak typeof(self) weakSelf = self;
+    
+    PFQuery *schoolQuery = [PFQuery queryWithClassName: kSPSchoolClassName];
     [schoolQuery setLimit: 1];
     
     [schoolQuery getObjectInBackgroundWithId: [[[PFUser currentUser] objectForKey: kSPUserSchoolKey] objectId]
@@ -278,11 +351,13 @@
      {
          if (!error)
          {
-             [self.loadingIndicator removeFromSuperview];
-             [self setSchool: (SPSchool *) object];
+             __strong typeof(weakSelf) strongSelf = weakSelf;
+             
+             [strongSelf.loadingIndicator removeFromSuperview];
+             [strongSelf setSchool: (SPSchool *) object];
              
              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                 [self setupViewForCurrentUser];
+                 [strongSelf setupViewForCurrentUser];
              });
          }
          

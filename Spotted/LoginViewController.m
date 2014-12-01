@@ -105,7 +105,8 @@
     // Check if both username and password fields are filled
     if ([emailTextField.text length] && [passwordTextField.text length])
     {
-        SPProgressHUD *progressHUD = [[SPProgressHUD alloc] initWithTitle: @"Signing In..." style: SPProgressHUDStyleLight];
+        SPProgressHUD *progressHUD = [[SPProgressHUD alloc] initWithTitle: NSLocalizedString(@"Signing In...", nil)
+                                                                    style: SPProgressHUDStyleLight];
         [progressHUD showInView: self.view];
         
         // Begin the login process

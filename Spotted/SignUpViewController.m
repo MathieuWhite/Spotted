@@ -94,13 +94,17 @@
 
 - (void) requestAvailableSchools
 {
-    PFQuery *query = [PFQuery queryWithClassName: @"School"];
+    __weak typeof(self) weakSelf = self;
+    
+    PFQuery *query = [PFQuery queryWithClassName: kSPSchoolClassName];
     [query setLimit: 100]; // 100 is the default value
     [query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error)
      {
          if (!error)
          {
-             [self setAvailableSchools: objects];
+             __strong typeof(weakSelf) strongSelf = weakSelf;
+             
+             [strongSelf setAvailableSchools: objects];
          }
          else
          {
@@ -129,7 +133,8 @@
         if (![self validatePassword: [passwordTextField text]])
             return;
         
-        SPProgressHUD *progressHUD = [[SPProgressHUD alloc] initWithTitle: @"Signing Up..." style: SPProgressHUDStyleLight];
+        SPProgressHUD *progressHUD = [[SPProgressHUD alloc] initWithTitle: NSLocalizedString(@"Creating Your Account...", nil)
+                                                                    style: SPProgressHUDStyleLight];
         [progressHUD showInView: self.view];
         
         PFUser *user = [PFUser user];
@@ -382,7 +387,6 @@
         // Send button
         if (buttonIndex == 1)
         {
-            /*
             // Email Subject
             NSString *subject = NSLocalizedString(@"Email Subject", nil);
             
@@ -401,7 +405,6 @@
             
             // Present the mail view controller
             [self presentViewController: mailController animated: YES completion: NULL];
-             */
         }
     }
 
