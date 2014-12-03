@@ -81,6 +81,11 @@
 "Invalid Email Message" = "You must sign up using a school provided email address.";
 /** UIAlertView Strings **/
 
+/** SPAlertBar Strings **/
+"Publishing Your Post" = "Publishing Your Post...";
+"Successfully Posted" = "Successfully Posted!";
+/** SPAlertBar Strings **/
+
 /** SPAuthenticationTableViewCell.m **/
 "Email address" = "Email address";
 "Name" = "Name";

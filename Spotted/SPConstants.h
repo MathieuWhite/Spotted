@@ -13,6 +13,8 @@ static NSString * const kSPKeyboardAnimationCurveKey = @"UIKeyboardAnimationCurv
 static NSString * const kSPUserLoginWasSuccessfulNotification = @"kSPUserLoginWasSuccessfulNotification";
 static NSString * const kSPUserWantsLogoutNotification = @"kSPUserWantsLogoutNotification";
 static NSString * const kSPUserDidDeleteAccountNotification = @"kSPUserDidDeleteAccountNotification";
+static NSString * const kSPPostProcessingNotification = @"kSPPostProcessingNotification";
+static NSString * const kSPPostSuccessfulNotification = @"kSPPostSuccessfulNotification";
 
 #pragma mark - PFObject User Class
 

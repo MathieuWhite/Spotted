@@ -17,5 +17,9 @@
 #define SPSettingsSectionHeaderTextColor [UIColor colorWithRed: 69.0f/255.0f green: 69.0f/255.0f blue: 69.0f/255.0f alpha: 1.0f]
 #define SPTimelineCellContentTextColor [UIColor colorWithRed: 69.0f/255.0f green: 69.0f/255.0f blue: 69.0f/255.0f alpha: 1.0f]
 #define SPTimelineCellDateTextColor [UIColor colorWithRed: 165.0f/255.0f green: 165.0f/255.0f blue: 165.0f/255.0f alpha: 1.0f]
+#define SPAlertBarDefaultColor [UIColor colorWithRed: 70.0f/255.0f green: 150.0f/255.0f blue: 239.0f/255.0f alpha: 1.0f]
+#define SPAlertBarSuccessColor [UIColor colorWithRed: 109.0f/255.0f green: 190.0f/255.0f blue: 73.0f/255.0f alpha: 1.0f]
+#define SPAlertBarCautionColor [UIColor colorWithRed: 238.0f/255.0f green: 177.0f/255.0f blue: 11.0f/255.0f alpha: 1.0f]
+#define SPAlertBarErrorColor [UIColor colorWithRed: 230.0f/255.0f green: 65.0f/255.0f blue: 65.0f/255.0f alpha: 1.0f]
 
 #endif

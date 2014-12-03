@@ -17,6 +17,7 @@
 #import "SPSchool.h"
 #import "SPLoadingView.h"
 #import "SPPost.h"
+#import "SPAlertBar.h"
 
 @interface TimelineViewController ()
 
@@ -25,7 +26,6 @@
 @property (nonatomic, weak) SPNavigationTitleView *titleView;
 
 @property (nonatomic, weak) SPTimelineTableView *tableView;
-//@property (nonatomic, weak) UILabel *welcomeLabel;
 
 @property (nonatomic, weak) SPLoadingView *loadingIndicator;
 
@@ -61,6 +61,18 @@
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(removeViewsForUserLogout)
                                                  name: kSPUserDidDeleteAccountNotification
+                                               object: nil];
+    
+    // Notification for when the user post is processing
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(showProcessingPostAlert)
+                                                 name: kSPPostProcessingNotification
+                                               object: nil];
+    
+    // Notification for when the user post is successful
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(showSuccessfulPostAlert)
+                                                 name: kSPPostSuccessfulNotification
                                                object: nil];
 }
 
@@ -221,54 +233,6 @@
 
 #pragma mark - Private Instance Methods
 
-- (void) postTesting
-{
-    // Posting
-    /*
-    SPPost *post = [SPPost object];
-    [post setContent: @"This is a different post!"];
-    [post setUser: [PFUser currentUser]];
-    [post setSchool: [self school]];
-    
-    // Posts are public, and may not be modified after posting
-    PFACL *postACL = [PFACL ACLWithUser: [PFUser currentUser]];
-    [postACL setPublicReadAccess: YES];
-    [postACL setPublicWriteAccess: NO];
-    [post setACL: postACL];
-    
-    // Save the Post Object
-    [post saveInBackgroundWithBlock: ^(BOOL succeeded, NSError *error) {
-        if (!error)
-            NSLog(@"Test post was successful");
-        else
-            NSLog(@"ERROR: %@", [error description]);
-    }];
-     */
-    
-    /*
-    // Retrieving
-    __weak typeof(self) weakSelf = self;
-    
-    PFQuery *postQuery = [PFQuery queryWithClassName: kSPPostClassName];
-    [postQuery setLimit: 100]; // 100 is the default limit
-    [postQuery whereKey: kSPPostSchoolKey equalTo: [self school]];
-    
-    [postQuery findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-
-            [objects enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
-                [strongSelf.welcomeLabel setText: [NSString stringWithFormat: @"%@", [(SPPost *) obj content]]];
-            }];
-        }
-        else
-            NSLog(@"ERROR: %@", [error description]);
-    }];
-     */
-    
-}
-
 - (void) animateContent
 {
     // Show the navigation bar
@@ -372,6 +336,43 @@
 }
 
 #pragma mark - Notification Methods
+
+- (void) showProcessingPostAlert
+{
+    SPAlertBar *alertBar = [SPAlertBar sharedAlertBar];
+    [alertBar setFrame: CGRectMake(0.0f, -30.0f, CGRectGetWidth([self.view bounds]), 30.0f)];
+    [alertBar setTintColor: SPAlertBarDefaultColor];
+    [alertBar setAlertText: NSLocalizedString(@"Publishing Your Post", nil)];
+    
+    [self.view addSubview: alertBar];
+    
+    [UIView animateWithDuration: 0.25
+                          delay: 0.0
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations: ^{
+                         [alertBar setFrame: CGRectMake(0.0f, 0.0f, CGRectGetWidth([self.view bounds]), 30.0f)];
+                     }
+                     completion: NULL];
+}
+
+- (void) showSuccessfulPostAlert
+{
+    SPAlertBar *alertBar = [SPAlertBar sharedAlertBar];
+    [alertBar setTintColor: SPAlertBarSuccessColor];
+    [alertBar setAlertText: NSLocalizedString(@"Successfully Posted", nil)];
+    
+    //[self.view addSubview: alertBar];
+    
+    [UIView animateWithDuration: 0.25
+                          delay: 2.0
+                        options: UIViewAnimationOptionCurveEaseOut
+                     animations: ^{
+                         [alertBar setFrame: CGRectMake(0.0f, -30.0f, CGRectGetWidth([self.view bounds]), 30.0f)];
+                     }
+                     completion: ^(BOOL finished){
+                         [alertBar removeFromSuperview];
+                     }];
+}
 
 - (void) getSchoolForCurrentUser
 {

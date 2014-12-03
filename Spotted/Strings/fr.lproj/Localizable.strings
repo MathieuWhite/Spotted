@@ -81,6 +81,11 @@
 "Invalid Email Message" = "Vous devez vous inscrire en utilisant une adresse courriel fournie par votre école.";
 /** UIAlertView Strings **/
 
+/** SPAlertBar Strings **/
+"Publishing Your Post" = "Publication de votre message...";
+"Successfully Posted" = "Publié avec succès!";
+/** SPAlertBar Strings **/
+
 /** SPAuthenticationTableViewCell.m **/
 "Email address" = "Adresse courriel";
 "Name" = "Nom";

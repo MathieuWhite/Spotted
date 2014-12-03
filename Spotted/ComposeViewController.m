@@ -90,6 +90,8 @@
 
 - (void) processPost
 {
+    [[NSNotificationCenter defaultCenter] postNotificationName: kSPPostProcessingNotification object: nil];
+    
     SPPost *post = [SPPost object];
     [post setContent: [self.textView text]];
     [post setUser: [PFUser currentUser]];
@@ -104,7 +106,11 @@
     // Save the Post Object
     [post saveInBackgroundWithBlock: ^(BOOL succeeded, NSError *error) {
         if (!error)
-            NSLog(@"Post was successful");
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName: kSPPostSuccessfulNotification object: nil];
+            });
+        }
         else
             NSLog(@"ERROR: %@", [error description]);
     }];
