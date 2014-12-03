@@ -15,5 +15,7 @@
 #define SPCellSeparatorColor [UIColor colorWithRed: 229.0f/255.0f green: 229.0f/255.0f blue: 229.0f/255.0f alpha: 1.0f]
 #define SPCellSelectionColor [UIColor colorWithRed: 229.0f/255.0f green: 229.0f/255.0f blue: 229.0f/255.0f alpha: 1.0f]
 #define SPSettingsSectionHeaderTextColor [UIColor colorWithRed: 69.0f/255.0f green: 69.0f/255.0f blue: 69.0f/255.0f alpha: 1.0f]
+#define SPTimelineCellContentTextColor [UIColor colorWithRed: 69.0f/255.0f green: 69.0f/255.0f blue: 69.0f/255.0f alpha: 1.0f]
+#define SPTimelineCellDateTextColor [UIColor colorWithRed: 165.0f/255.0f green: 165.0f/255.0f blue: 165.0f/255.0f alpha: 1.0f]
 
 #endif

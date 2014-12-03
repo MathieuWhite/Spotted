@@ -11,6 +11,7 @@
 #import "SettingsViewController.h"
 #import "ComposeViewController.h"
 #import "SPNavigationTitleView.h"
+#import "SPTimelineTableView.h"
 #import "SPColors.h"
 #import "SPConstants.h"
 #import "SPSchool.h"
@@ -22,7 +23,9 @@
 @property (nonatomic, strong) SPSchool *school;
 
 @property (nonatomic, weak) SPNavigationTitleView *titleView;
-@property (nonatomic, weak) UILabel *welcomeLabel;
+
+@property (nonatomic, weak) SPTimelineTableView *tableView;
+//@property (nonatomic, weak) UILabel *welcomeLabel;
 
 @property (nonatomic, weak) SPLoadingView *loadingIndicator;
 
@@ -198,28 +201,22 @@
     // Set the background colorg
     [self.view setBackgroundColor: SPGrayBackgroundColor];
     
-    // Initialize the welcome label
-    UILabel *welcomeLabel = [[UILabel alloc] init];
-    [welcomeLabel setFrame: CGRectMake(0, 60, CGRectGetWidth([self.view bounds]), 44)];
-    [welcomeLabel setTextColor: [UIColor blackColor]];
-    [welcomeLabel setTextAlignment: NSTextAlignmentCenter];
-    [welcomeLabel setText: [NSString stringWithFormat: @"Welcome, %@!", [[PFUser currentUser] objectForKey: kSPUserNameKey]]];
-    [welcomeLabel setAlpha: 0.0f];
+    // Initialize the table view
+    SPTimelineTableView *tableView = [[SPTimelineTableView alloc] initWithSchool: [self school]];
+    [tableView setAlpha: 0.0f];
     
-    [self.view addSubview: welcomeLabel];
+    // Add the table view to the main view
+    [self.view addSubview: tableView];
     
     // Set each component to its property
     [self setTitleView: titleView];
-    [self setWelcomeLabel: welcomeLabel];
+    [self setTableView: tableView];
     
     // Auto Layout
     [self setupConstraints];
     
     // Animate the content
     [self animateContent];
-    
-    // Test Post
-    [self postTesting];
 }
 
 #pragma mark - Private Instance Methods
@@ -248,6 +245,7 @@
     }];
      */
     
+    /*
     // Retrieving
     __weak typeof(self) weakSelf = self;
     
@@ -267,6 +265,7 @@
         else
             NSLog(@"ERROR: %@", [error description]);
     }];
+     */
     
 }
 
@@ -279,7 +278,7 @@
                           delay: 0.4
                         options: UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         [self.welcomeLabel setAlpha: 1.0f];
+                         [self.tableView setAlpha: 1.0f];
                      }
                      completion: NULL];
 }
@@ -335,6 +334,41 @@
 
 - (void) setupConstraints
 {
+    // Table View Top
+    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.tableView
+                                                           attribute: NSLayoutAttributeTop
+                                                           relatedBy: NSLayoutRelationEqual
+                                                              toItem: self.view
+                                                           attribute: NSLayoutAttributeTop
+                                                          multiplier: 1.0f
+                                                            constant: 0.0f]];
+    
+    // Table View Left
+    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.tableView
+                                                           attribute: NSLayoutAttributeLeft
+                                                           relatedBy: NSLayoutRelationEqual
+                                                              toItem: self.view
+                                                           attribute: NSLayoutAttributeLeft
+                                                          multiplier: 1.0f
+                                                            constant: 0.0f]];
+    
+    // Table View Right
+    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.tableView
+                                                           attribute: NSLayoutAttributeRight
+                                                           relatedBy: NSLayoutRelationEqual
+                                                              toItem: self.view
+                                                           attribute: NSLayoutAttributeRight
+                                                          multiplier: 1.0f
+                                                            constant: 0.0f]];
+    
+    // Table View Bottom
+    [self.view addConstraint: [NSLayoutConstraint constraintWithItem: self.tableView
+                                                           attribute: NSLayoutAttributeBottom
+                                                           relatedBy: NSLayoutRelationEqual
+                                                              toItem: self.view
+                                                           attribute: NSLayoutAttributeBottom
+                                                          multiplier: 1.0f
+                                                            constant: 0.0f]];
 }
 
 #pragma mark - Notification Methods

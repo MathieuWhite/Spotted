@@ -66,8 +66,8 @@
 
     // Array of rows for the account section
     NSMutableArray *accountRows = [NSMutableArray array];
-    [accountRows addObject: @"Sign Out"];
-    [accountRows addObject: @"Delete Account"];
+    [accountRows addObject: NSLocalizedString(@"Sign Out", nil)];
+    [accountRows addObject: NSLocalizedString(@"Delete Account", nil)];
     
     // Add each row array to their section
     [generalSection setValue: generalRows forKey: @"rows"];

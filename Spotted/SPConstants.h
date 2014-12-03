@@ -39,3 +39,4 @@ static NSString * const kSPPostClassName = @"Post";
 static NSString * const kSPPostContentKey = @"content";
 static NSString * const kSPPostUserKey = @"user";
 static NSString * const kSPPostSchoolKey = @"school";
+static NSString * const kSPPostCreatedAtKey = @"createdAt";

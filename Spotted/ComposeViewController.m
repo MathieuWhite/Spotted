@@ -32,7 +32,7 @@
     [self setTitle: NSLocalizedString(@"Compose", nil)];
     
     // Close Bar Button Item
-    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle: @"Close"
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"Close", nil)
                                                                     style: UIBarButtonItemStylePlain
                                                                    target: self
                                                                    action: @selector(dismissComposeView)];
@@ -41,7 +41,7 @@
                                forState: UIControlStateNormal];
     
     // Post Bar Button Item
-    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithTitle: @"Post"
+    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithTitle: NSLocalizedString(@"Post", nil)
                                                                    style: UIBarButtonItemStylePlain
                                                                   target: self
                                                                   action: @selector(processPost)];
@@ -84,17 +84,16 @@
 
 - (void) dismissComposeView
 {
+    [self.textView resignFirstResponder];
     [self dismissViewControllerAnimated: YES completion: NULL];
 }
 
 - (void) processPost
 {
-    SPSchool *school = [[PFUser currentUser] valueForKey: kSPUserSchoolKey];
-    
     SPPost *post = [SPPost object];
     [post setContent: [self.textView text]];
     [post setUser: [PFUser currentUser]];
-    [post setSchool: school];
+    [post setSchool: [[PFUser currentUser] valueForKey: kSPUserSchoolKey]];
     
     // Posts are public, and may not be modified after posting
     PFACL *postACL = [PFACL ACLWithUser: [PFUser currentUser]];
@@ -110,6 +109,7 @@
             NSLog(@"ERROR: %@", [error description]);
     }];
     
+    [self.textView resignFirstResponder];
     [self dismissViewControllerAnimated: YES completion: NULL];
 }
 

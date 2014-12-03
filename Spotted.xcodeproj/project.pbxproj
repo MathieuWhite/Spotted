@@ -10,6 +10,8 @@
 		4E0043531A255C7B00F4962F /* SPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0043521A255C7B00F4962F /* SPSettings.m */; };
 		4E0043561A256C0800F4962F /* SPSettingsTableViewSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0043551A256C0800F4962F /* SPSettingsTableViewSectionHeader.m */; };
 		4E04C7421A28B3F900412642 /* SPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E04C7411A28B3F900412642 /* SPLoadingView.m */; };
+		4E091E991A2E29990060F3C2 /* SPTimelineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E091E981A2E29990060F3C2 /* SPTimelineTableView.m */; };
+		4E091E9C1A2E29B90060F3C2 /* SPTimelineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E091E9B1A2E29B90060F3C2 /* SPTimelineTableViewCell.m */; };
 		4E17D10E1A2BFB5A00C239B9 /* SPPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17D10D1A2BFB5A00C239B9 /* SPPost.m */; };
 		4E17D1111A2C0C3A00C239B9 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E17D1101A2C0C3A00C239B9 /* ComposeViewController.m */; };
 		4E1A82DE1A17B53B0001F0E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A82DD1A17B53B0001F0E7 /* main.m */; };
@@ -68,6 +70,7 @@
 		4EE6F7DA1A1ACD2C0084F64E /* SPLoginTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6F7D91A1ACD2C0084F64E /* SPLoginTableView.m */; };
 		4EE6F7DD1A1AD91C0084F64E /* SPSignUpTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6F7DC1A1AD91C0084F64E /* SPSignUpTableView.m */; };
 		4EE6F7E01A1AEBC50084F64E /* SPStrokeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE6F7DF1A1AEBC50084F64E /* SPStrokeButton.m */; };
+		4EEBA1F71A2EAC2400B738BF /* SPTimelineCellLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EEBA1F61A2EAC2400B738BF /* SPTimelineCellLabel.m */; };
 		5933DA4F1A24B98E00E01E0E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */; };
 		5933DA501A24B98E00E01E0E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5933DA4E1A24B98E00E01E0E /* Fabric.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +92,10 @@
 		4E0043551A256C0800F4962F /* SPSettingsTableViewSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSettingsTableViewSectionHeader.m; path = Views/SPSettingsTableViewSectionHeader.m; sourceTree = "<group>"; };
 		4E04C7401A28B3F900412642 /* SPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPLoadingView.h; path = Views/SPLoadingView.h; sourceTree = "<group>"; };
 		4E04C7411A28B3F900412642 /* SPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPLoadingView.m; path = Views/SPLoadingView.m; sourceTree = "<group>"; };
+		4E091E971A2E29990060F3C2 /* SPTimelineTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPTimelineTableView.h; path = Views/SPTimelineTableView.h; sourceTree = "<group>"; };
+		4E091E981A2E29990060F3C2 /* SPTimelineTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPTimelineTableView.m; path = Views/SPTimelineTableView.m; sourceTree = "<group>"; };
+		4E091E9A1A2E29B90060F3C2 /* SPTimelineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPTimelineTableViewCell.h; path = Views/SPTimelineTableViewCell.h; sourceTree = "<group>"; };
+		4E091E9B1A2E29B90060F3C2 /* SPTimelineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPTimelineTableViewCell.m; path = Views/SPTimelineTableViewCell.m; sourceTree = "<group>"; };
 		4E17D10C1A2BFB5A00C239B9 /* SPPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPPost.h; path = Models/SPPost.h; sourceTree = "<group>"; };
 		4E17D10D1A2BFB5A00C239B9 /* SPPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPPost.m; path = Models/SPPost.m; sourceTree = "<group>"; };
 		4E17D10F1A2C0C3A00C239B9 /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
@@ -214,6 +221,8 @@
 		4EE6F7DC1A1AD91C0084F64E /* SPSignUpTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPSignUpTableView.m; path = Views/SPSignUpTableView.m; sourceTree = "<group>"; };
 		4EE6F7DE1A1AEBC50084F64E /* SPStrokeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPStrokeButton.h; path = Views/SPStrokeButton.h; sourceTree = "<group>"; };
 		4EE6F7DF1A1AEBC50084F64E /* SPStrokeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPStrokeButton.m; path = Views/SPStrokeButton.m; sourceTree = "<group>"; };
+		4EEBA1F51A2EAC2400B738BF /* SPTimelineCellLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPTimelineCellLabel.h; path = Views/SPTimelineCellLabel.h; sourceTree = "<group>"; };
+		4EEBA1F61A2EAC2400B738BF /* SPTimelineCellLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPTimelineCellLabel.m; path = Views/SPTimelineCellLabel.m; sourceTree = "<group>"; };
 		5933DA4D1A24B98E00E01E0E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Spotted/Frameworks/Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		5933DA4E1A24B98E00E01E0E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Spotted/Frameworks/Fabric.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -456,6 +465,12 @@
 				4EE6F7DF1A1AEBC50084F64E /* SPStrokeButton.m */,
 				4EE294B31A1950BE00022566 /* SPTextField.h */,
 				4EE294B41A1950BE00022566 /* SPTextField.m */,
+				4EEBA1F51A2EAC2400B738BF /* SPTimelineCellLabel.h */,
+				4EEBA1F61A2EAC2400B738BF /* SPTimelineCellLabel.m */,
+				4E091E971A2E29990060F3C2 /* SPTimelineTableView.h */,
+				4E091E981A2E29990060F3C2 /* SPTimelineTableView.m */,
+				4E091E9A1A2E29B90060F3C2 /* SPTimelineTableViewCell.h */,
+				4E091E9B1A2E29B90060F3C2 /* SPTimelineTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -609,6 +624,7 @@
 				4ED4A0FB1A20D08D002D1B59 /* AlertPresentingAnimator.m in Sources */,
 				4EB037651A23D28A00A50B35 /* SPSchool.m in Sources */,
 				4EE6F7DD1A1AD91C0084F64E /* SPSignUpTableView.m in Sources */,
+				4E091E991A2E29990060F3C2 /* SPTimelineTableView.m in Sources */,
 				4E1A83FD1A194A340001F0E7 /* FadeDismissingAnimator.m in Sources */,
 				4E1A83DA1A1902590001F0E7 /* POPAnimationExtras.mm in Sources */,
 				4E1A83481A18FE680001F0E7 /* LoginViewController.m in Sources */,
@@ -627,6 +643,7 @@
 				4E0043531A255C7B00F4962F /* SPSettings.m in Sources */,
 				4ED4A1011A20D244002D1B59 /* AlertViewController.m in Sources */,
 				4E1A83DC1A1902590001F0E7 /* POPAnimationTracer.mm in Sources */,
+				4E091E9C1A2E29B90060F3C2 /* SPTimelineTableViewCell.m in Sources */,
 				4E1A82DE1A17B53B0001F0E7 /* main.m in Sources */,
 				4E1A83E81A1902590001F0E7 /* TransformationMatrix.cpp in Sources */,
 				4E1A83D81A1902590001F0E7 /* POPAnimation.mm in Sources */,
@@ -642,6 +659,7 @@
 				4E1A83E41A1902590001F0E7 /* POPMath.mm in Sources */,
 				4E1A834C1A1901250001F0E7 /* FadePresentingAnimator.m in Sources */,
 				4E1A83211A17B7D60001F0E7 /* TimelineViewController.m in Sources */,
+				4EEBA1F71A2EAC2400B738BF /* SPTimelineCellLabel.m in Sources */,
 				4E1A83DF1A1902590001F0E7 /* POPCGUtils.mm in Sources */,
 				4ED4A0FE1A20D1B8002D1B59 /* AlertDismissingAnimator.m in Sources */,
 				4E1A83F71A1933700001F0E7 /* SPFlatButton.m in Sources */,

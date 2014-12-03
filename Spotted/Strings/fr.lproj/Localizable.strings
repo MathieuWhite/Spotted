@@ -12,7 +12,7 @@
 "Sign In" = "Se Connecter";
 "Forgot your password?" = "Mot de passe oublié?";
 "Don't have an account?" = "Pas de compte?";
-"Sign Up Button" = "Vous inscrire à Secret App";
+"Sign Up Button" = "Vous inscrire à Espio";
 "Signing In..." = "Connexion en cours...";
 /** LoginViewController.m **/
 
@@ -20,11 +20,21 @@
 "Create Your Account" = "Créez Votre Compte";
 "Sign Up" = "S'inscrire";
 "Email Subject" = "Demande d'ajout d'école";
-"Message Body" = "Bonjour Mathieu,\nS'il vous plaît ajouter [mon école] sur Secret App!\nMerci.";
+"Message Body" = "Bonjour Mathieu,\nS'il vous plaît ajouter [mon école] sur Espio!\nMerci.";
 "Creating Your Account..." = "Inscription en cours...";
 /** SignUpViewController.m **/
 
 /** TimelineViewController.m **/
+"%ld years ago" = "il y a %ld ans";
+"%ld year ago" = "il y a %ld an";
+"%ld days ago" = "il y a %ld jours";
+"%ld day ago" = "il y a %ld jour";
+"%ld hours ago" = "il y a %ld heures";
+"%ld hour ago" = "il y a %ld heure";
+"%ld minutes ago" = "il y a %ld minutes";
+"%ld minute ago" = "il y a %ld minute";
+"%ld seconds ago" = "il y a %ld secondes";
+"%ld second ago" = "il y a %ld seconde";
 /** TimelineViewController.m **/
 
 /** SettingsViewController.m **/
@@ -37,9 +47,15 @@
 "Sign Out" = "Se Déconnecter";
 "Sign Out Message"= "Êtes-vous certain de vouloir vous déconnecter?";
 "Delete Account" = "Supprimer Votre Compte";
-"Delete Account Message" = "%@, êtes-vous certain de vouloir supprimer votre compte sur Secret App?";
+"Delete Account Message" = "%@, êtes-vous certain de vouloir supprimer votre compte sur Espio?";
 "Delete" = "Supprimer";
 /** SettingsViewController.m **/
+
+/** ComposeViewController.m **/
+"Compose" = "Composer";
+"Close" = "Fermer";
+"Post" = "Poster";
+/** ComposeViewController.m **/
 
 // Views
 
@@ -55,12 +71,12 @@
 "Cancel" = "Annuler";
 "Send" = "Envoyer";
 "Success" = "Succès";
-"Success Message" = "Merci de créer un compte sur Secret App. S'il vous plaît confirmer votre adresse courriel avant de vous connecter.";
+"Success Message" = "Merci de créer un compte sur Espio. S'il vous plaît confirmer votre adresse courriel avant de vous connecter.";
 "All fields are required." = "Tous les champs sont obligatoires.";
 "Invalid Password" = "Mot de Passe Invalide";
 "Invalid Password Message" = "Votre mot de passe doit avoir un minimum de 6 caractères.";
 "Not Available" = "Non Disponible";
-"Not Available Message" = "Votre école est actuellement pas disponible sur Secret App. S'il vous plaît envoyez-nous un courriel avec le nom de votre école et nous l'ajouterons le plus rapidement possible.";
+"Not Available Message" = "Votre école est actuellement pas disponible sur Espio. S'il vous plaît envoyez-nous un courriel avec le nom de votre école et nous l'ajouterons le plus rapidement possible.";
 "Invalid Email" = "Courriel Invalide";
 "Invalid Email Message" = "Vous devez vous inscrire en utilisant une adresse courriel fournie par votre école.";
 /** UIAlertView Strings **/
