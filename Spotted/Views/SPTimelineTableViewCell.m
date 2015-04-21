@@ -12,6 +12,7 @@
 @interface SPTimelineTableViewCell ()
 
 @property (nonatomic, weak) UILabel *dateLabel;
+@property (nonatomic, weak) UIImageView *photoView;
 @property (nonatomic, weak) UIView *cellSeparator;
 
 @end
@@ -51,6 +52,11 @@
     [contentLabel setLineBreakMode: NSLineBreakByWordWrapping];
     [contentLabel setTranslatesAutoresizingMaskIntoConstraints: NO];
     
+    // Initialize the photo view
+    UIImageView *photoView = [[UIImageView alloc] init];
+    [photoView setBackgroundColor: SPTimelineCellDateTextColor];
+    [photoView setTranslatesAutoresizingMaskIntoConstraints: NO];
+    
     // Initialize the cell separator
     UIView *cellSeparator = [[UIView alloc] init];
     [cellSeparator setBackgroundColor: SPCellSeparatorColor];
@@ -62,13 +68,15 @@
     [self setSelectedBackgroundView: selectedView];
     
     // Add each component to the cell content view
-    [self.contentView addSubview: contentLabel];
     [self.contentView addSubview: dateLabel];
+    [self.contentView addSubview: contentLabel];
+    //[self.contentView addSubview: photoView];
     [self.contentView addSubview: cellSeparator];
     
     // Set each component to it's property
     [self setDateLabel: dateLabel];
     [self setContentLabel: contentLabel];
+    [self setPhotoView: photoView];
     [self setCellSeparator: cellSeparator];
     
     // Auto Layout
@@ -232,6 +240,44 @@
                                                                  multiplier: 1.0f
                                                                    constant: -10.0f]];
     
+    /*
+    // Photo View Height
+    [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.photoView
+                                                                  attribute: NSLayoutAttributeHeight
+                                                                  relatedBy: NSLayoutRelationEqual
+                                                                     toItem: self.contentView
+                                                                  attribute: NSLayoutAttributeHeight
+                                                                 multiplier: 0.0f
+                                                                   constant: 168.0f]];
+    
+    // Photo View Bottom
+    [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.photoView
+                                                                  attribute: NSLayoutAttributeBottom
+                                                                  relatedBy: NSLayoutRelationEqual
+                                                                     toItem: self.cellSeparator
+                                                                  attribute: NSLayoutAttributeTop
+                                                                 multiplier: 1.0f
+                                                                   constant: -10.0f]];
+    
+    // Photo View Left
+    [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.photoView
+                                                                  attribute: NSLayoutAttributeLeft
+                                                                  relatedBy: NSLayoutRelationEqual
+                                                                     toItem: self.contentLabel
+                                                                  attribute: NSLayoutAttributeLeft
+                                                                 multiplier: 1.0f
+                                                                   constant: 0.0f]];
+    
+    // Photo View Right
+    [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.photoView
+                                                                  attribute: NSLayoutAttributeRight
+                                                                  relatedBy: NSLayoutRelationEqual
+                                                                     toItem: self.contentLabel
+                                                                  attribute: NSLayoutAttributeRight
+                                                                 multiplier: 1.0f
+                                                                   constant: 0.0f]];
+     */
+    
     // Cell Separator Height
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.cellSeparator
                                                                   attribute: NSLayoutAttributeHeight
@@ -245,19 +291,19 @@
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.cellSeparator
                                                                   attribute: NSLayoutAttributeLeft
                                                                   relatedBy: NSLayoutRelationEqual
-                                                                     toItem: self.contentView
+                                                                     toItem: self.contentLabel
                                                                   attribute: NSLayoutAttributeLeft
                                                                  multiplier: 1.0f
-                                                                   constant: 10.0f]];
+                                                                   constant: 0.0f]];
     
     // Cell Separator Right
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.cellSeparator
                                                                   attribute: NSLayoutAttributeRight
                                                                   relatedBy: NSLayoutRelationEqual
-                                                                     toItem: self.contentView
+                                                                     toItem: self.contentLabel
                                                                   attribute: NSLayoutAttributeRight
                                                                  multiplier: 1.0f
-                                                                   constant: -10.0f]];
+                                                                   constant: 0.0f]];
     
     // Cell Separator Bottom
     [self.contentView addConstraint: [NSLayoutConstraint constraintWithItem: self.cellSeparator

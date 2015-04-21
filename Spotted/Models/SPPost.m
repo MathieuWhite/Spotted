@@ -12,6 +12,8 @@
 @implementation SPPost
 
 @dynamic content;
+@dynamic photo;
+@dynamic photoThumbnail;
 @dynamic user;
 @dynamic school;
 

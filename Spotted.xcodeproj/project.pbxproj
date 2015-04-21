@@ -55,8 +55,10 @@
 		4E1A83F71A1933700001F0E7 /* SPFlatButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A83F61A1933700001F0E7 /* SPFlatButton.m */; };
 		4E1A83FD1A194A340001F0E7 /* FadeDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1A83FC1A194A340001F0E7 /* FadeDismissingAnimator.m */; };
 		4E2A32EC1A2F4D6C004E2C64 /* SPAlertBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2A32EB1A2F4D6C004E2C64 /* SPAlertBar.m */; };
+		4E2D39611A33E6400028E29C /* SPComposeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2D39601A33E6400028E29C /* SPComposeBar.m */; };
 		4E424F081A1A5EA800AB1922 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E424F071A1A5EA800AB1922 /* AuthenticationViewController.m */; };
 		4E424F0C1A1A678000AB1922 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E424F0A1A1A678000AB1922 /* Localizable.strings */; };
+		4E6C19C41A33EA84008E6339 /* SPCircleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E6C19C31A33EA84008E6339 /* SPCircleButton.m */; };
 		4E8711141A24BFA100F818C4 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8711131A24BFA100F818C4 /* SettingsViewController.m */; };
 		4E8F0F721A25147000A6E607 /* SPSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8F0F711A25147000A6E607 /* SPSettingsTableViewCell.m */; };
 		4EB037651A23D28A00A50B35 /* SPSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB037641A23D28A00A50B35 /* SPSchool.m */; };
@@ -189,11 +191,15 @@
 		4E1A83FC1A194A340001F0E7 /* FadeDismissingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FadeDismissingAnimator.m; path = Animators/FadeDismissingAnimator.m; sourceTree = "<group>"; };
 		4E2A32EA1A2F4D6C004E2C64 /* SPAlertBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPAlertBar.h; path = Views/SPAlertBar.h; sourceTree = "<group>"; };
 		4E2A32EB1A2F4D6C004E2C64 /* SPAlertBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPAlertBar.m; path = Views/SPAlertBar.m; sourceTree = "<group>"; };
+		4E2D395F1A33E6400028E29C /* SPComposeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPComposeBar.h; path = Views/SPComposeBar.h; sourceTree = "<group>"; };
+		4E2D39601A33E6400028E29C /* SPComposeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPComposeBar.m; path = Views/SPComposeBar.m; sourceTree = "<group>"; };
 		4E424F061A1A5EA800AB1922 /* AuthenticationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticationViewController.h; sourceTree = "<group>"; };
 		4E424F071A1A5EA800AB1922 /* AuthenticationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticationViewController.m; sourceTree = "<group>"; };
 		4E424F0B1A1A678000AB1922 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Strings/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E424F0D1A1A678E00AB1922 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Strings/en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4E424F0E1A1A679700AB1922 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Strings/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4E6C19C21A33EA84008E6339 /* SPCircleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPCircleButton.h; path = Views/SPCircleButton.h; sourceTree = "<group>"; };
+		4E6C19C31A33EA84008E6339 /* SPCircleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPCircleButton.m; path = Views/SPCircleButton.m; sourceTree = "<group>"; };
 		4E8711121A24BFA100F818C4 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4E8711131A24BFA100F818C4 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4E8F0F701A25147000A6E607 /* SPSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SPSettingsTableViewCell.h; path = Views/SPSettingsTableViewCell.h; sourceTree = "<group>"; };
@@ -450,6 +456,10 @@
 				4E2A32EB1A2F4D6C004E2C64 /* SPAlertBar.m */,
 				4EE6F7D51A1AC8CA0084F64E /* SPAuthenticationTableViewCell.h */,
 				4EE6F7D61A1AC8CA0084F64E /* SPAuthenticationTableViewCell.m */,
+				4E6C19C21A33EA84008E6339 /* SPCircleButton.h */,
+				4E6C19C31A33EA84008E6339 /* SPCircleButton.m */,
+				4E2D395F1A33E6400028E29C /* SPComposeBar.h */,
+				4E2D39601A33E6400028E29C /* SPComposeBar.m */,
 				4E1A83F51A1933700001F0E7 /* SPFlatButton.h */,
 				4E1A83F61A1933700001F0E7 /* SPFlatButton.m */,
 				4E04C7401A28B3F900412642 /* SPLoadingView.h */,
@@ -663,10 +673,12 @@
 				4E1A83E21A1902590001F0E7 /* POPGeometry.mm in Sources */,
 				4E8F0F721A25147000A6E607 /* SPSettingsTableViewCell.m in Sources */,
 				4E1A83E41A1902590001F0E7 /* POPMath.mm in Sources */,
+				4E6C19C41A33EA84008E6339 /* SPCircleButton.m in Sources */,
 				4E1A834C1A1901250001F0E7 /* FadePresentingAnimator.m in Sources */,
 				4E1A83211A17B7D60001F0E7 /* TimelineViewController.m in Sources */,
 				4EEBA1F71A2EAC2400B738BF /* SPTimelineCellLabel.m in Sources */,
 				4E1A83DF1A1902590001F0E7 /* POPCGUtils.mm in Sources */,
+				4E2D39611A33E6400028E29C /* SPComposeBar.m in Sources */,
 				4ED4A0FE1A20D1B8002D1B59 /* AlertDismissingAnimator.m in Sources */,
 				4E1A83F71A1933700001F0E7 /* SPFlatButton.m in Sources */,
 				4E04C7421A28B3F900412642 /* SPLoadingView.m in Sources */,

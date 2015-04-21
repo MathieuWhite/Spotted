@@ -12,6 +12,8 @@
 @interface SPPost : PFObject <PFSubclassing>
 
 @property (nonatomic, copy) NSString *content;
+@property (nonatomic, strong) PFFile *photo;
+@property (nonatomic, strong) PFFile *photoThumbnail;
 @property (nonatomic, strong) PFUser *user;
 @property (nonatomic, strong) SPSchool *school;
 

@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSMutableDictionary *offscreenCells;
 
 @property (nonatomic, weak) UIRefreshControl *refreshControl;
+@property (nonatomic, assign) BOOL releaseToRefresh;
 
 @end
 
@@ -56,7 +57,8 @@
     // Initialize the refresh control
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl setTintColor: SPBlackColor20];
-    [refreshControl addTarget: self action: @selector(refreshTable) forControlEvents: UIControlEventValueChanged];
+    [refreshControl addTarget: self action: @selector(pullToRefresh) forControlEvents: UIControlEventValueChanged];
+    [refreshControl addTarget: self action: @selector(refreshTable) forControlEvents: UIControlEventTouchUpInside];
     
     // Add the refresh control to the table
     [self addSubview: refreshControl];
@@ -96,27 +98,36 @@
     }];
 }
 
+- (void) pullToRefresh
+{
+    [self setReleaseToRefresh: YES];
+}
+
 - (void) refreshTable
 {
-    __weak typeof(self) weakSelf = self;
-    
-    PFQuery *postQuery = [PFQuery queryWithClassName: kSPPostClassName];
-    [postQuery setLimit: 100]; // 100 is the default limit
-    [postQuery whereKey: kSPPostSchoolKey equalTo: [self currentSchool]];
-    [postQuery orderByDescending: kSPPostCreatedAtKey];
-    
-    [postQuery findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
-        if (!error)
-        {
-            __strong typeof(weakSelf) strongSelf = weakSelf;
-            
-            [strongSelf setPostsArray: objects];
-            [strongSelf.refreshControl endRefreshing];
-            [strongSelf reloadData];
-        }
-        else
-            NSLog(@"ERROR: %@", [error description]);
-    }];
+    if ([self releaseToRefresh])
+    {
+        __weak typeof(self) weakSelf = self;
+        
+        PFQuery *postQuery = [PFQuery queryWithClassName: kSPPostClassName];
+        [postQuery setLimit: 100]; // 100 is the default limit
+        [postQuery whereKey: kSPPostSchoolKey equalTo: [self currentSchool]];
+        [postQuery orderByDescending: kSPPostCreatedAtKey];
+        
+        [postQuery findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
+            if (!error)
+            {
+                __strong typeof(weakSelf) strongSelf = weakSelf;
+                
+                [strongSelf setPostsArray: objects];
+                [strongSelf.refreshControl endRefreshing];
+                [strongSelf reloadData];
+                [strongSelf setReleaseToRefresh: NO];
+            }
+            else
+                NSLog(@"ERROR: %@", [error description]);
+        }];
+    }
 }
 
 #pragma mark - Auto Layout Method
@@ -197,6 +208,14 @@
 - (CGFloat) tableView: (UITableView *) tableView estimatedHeightForRowAtIndexPath: (NSIndexPath *) indexPath
 {
     return 68.0f;
+}
+
+#pragma mark - UIScrollViewDelegate Methods
+
+- (void) scrollViewDidEndDecelerating: (UIScrollView *) scrollView
+{
+    if ([self.refreshControl isRefreshing])
+        [self refreshTable];
 }
 
 @end

@@ -206,11 +206,8 @@
     // Set the navigation bar icons
     [self.navigationItem setLeftBarButtonItem: settingsIcon];
     [self.navigationItem setRightBarButtonItem: conversationsIcon];
-
-    // Show the navigation bar
-    //[self.navigationController setNavigationBarHidden: NO];
     
-    // Set the background colorg
+    // Set the background color
     [self.view setBackgroundColor: SPGrayBackgroundColor];
     
     // Initialize the table view

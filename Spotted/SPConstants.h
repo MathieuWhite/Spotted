@@ -39,6 +39,8 @@ static NSString * const kSPSchoolBlueColorKey = @"blue";
 // Keys
 static NSString * const kSPPostClassName = @"Post";
 static NSString * const kSPPostContentKey = @"content";
+static NSString * const kSPPostPhotoKey = @"photo";
+static NSString * const kSPPostPhotoThumbnailKey = @"photoThumbnail";
 static NSString * const kSPPostUserKey = @"user";
 static NSString * const kSPPostSchoolKey = @"school";
 static NSString * const kSPPostCreatedAtKey = @"createdAt";
